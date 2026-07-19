@@ -3,14 +3,12 @@ import { SlateFrame } from "~/components/SlateFrame";
 import { BarChart } from "~/components/charts/BarChart";
 import { releasesByDecade, gamesPerBranch, canonicitySplit, platformFamilies, longestGap } from "~/data/stats";
 import { games } from "~/data/games";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/stats")({
   component: StatsPage,
   head: () => ({
-    meta: [
-      { title: "Stats & Trivia | Chronicle Slate" },
-      { name: "description", content: "The Zelda timeline by the numbers." },
-    ],
+    meta: pageMeta("Stats & Trivia | Chronicle Slate", "The Zelda timeline by the numbers.", "/stats"),
   }),
 });
 

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc --noEmit",
+    "sitemap": "node --experimental-strip-types scripts/generate-sitemap.mjs",
+    "build": "npm run sitemap && vite build && tsc --noEmit",
     "start": "node server.js"
   },
   "dependencies": {

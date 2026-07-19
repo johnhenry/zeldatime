@@ -2,18 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
 import { threads } from "~/data/threads";
 import type { ThreadKind } from "~/types/content";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/threads/")({
   component: ThreadsHubPage,
   head: () => ({
-    meta: [
-      { title: "Threads | Chronicle Slate" },
-      {
-        name: "description",
-        content:
-          "Species, artifacts, items, enemies, wildlife, and places traced across every Zelda game they touch.",
-      },
-    ],
+    meta: pageMeta(
+      "Threads | Chronicle Slate",
+      "Species, artifacts, items, enemies, wildlife, and places traced across every Zelda game they touch.",
+      "/threads"
+    ),
   }),
 });
 

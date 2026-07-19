@@ -2,11 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
 import { branches } from "~/data/timeline";
 import { getGamesByBranch } from "~/data/games";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/branch/")({
   component: BranchHubPage,
   head: () => ({
-    meta: [{ title: "Timeline Branches | Chronicle Slate" }],
+    meta: pageMeta(
+      "Timeline Branches | Chronicle Slate",
+      "Eight histories, one per timeline lane — story arcs, fork points, and every game in order.",
+      "/branch"
+    ),
   }),
 });
 

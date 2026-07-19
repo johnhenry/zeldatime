@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
 import { GameCard } from "~/components/GameCard";
 import { ConfidenceBadge } from "~/components/ConfidenceBadge";
@@ -9,36 +9,51 @@ import { getGameBySlug, getRelatedGames } from "~/data/games";
 import { getBranch } from "~/data/timeline";
 import { getThreadsForGame } from "~/data/threads";
 import { getTermsForGame } from "~/data/glossary";
+import { absoluteUrl, ogImageFor } from "~/lib/site";
+import { videoGameLd, breadcrumbLd } from "~/lib/jsonld";
 
 export const Route = createFileRoute("/game/$slug")({
   component: GameDetailPage,
-  head: ({ params }) => {
+  loader: ({ params }) => {
     const game = getGameBySlug(params.slug);
+    if (!game) throw notFound();
+    return game;
+  },
+  head: ({ params, loaderData }) => {
+    const game = loaderData ?? getGameBySlug(params.slug);
+    if (!game) return { meta: [{ title: "Game Not Found | Chronicle Slate" }] };
+
+    const title = `${game.title} | Chronicle Slate`;
+    const ogImage = ogImageFor([game.keyArt, game.image]) ?? absoluteUrl("/icon-512.png");
+    const branch = getBranch(game.branch);
+
     return {
       meta: [
-        { title: game ? `${game.title} | Chronicle Slate` : "Game Not Found | Chronicle Slate" },
-        { name: "description", content: game?.synopsis ?? "Game not found" },
+        { title },
+        { name: "description", content: game.synopsis },
+        { property: "og:type", content: "article" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: game.synopsis },
+        { property: "og:image", content: ogImage },
+        { property: "og:url", content: absoluteUrl(`/game/${game.id}`) },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: game.synopsis },
+        { name: "twitter:image", content: ogImage },
+        { "script:ld+json": videoGameLd(game) },
+        {
+          "script:ld+json": breadcrumbLd([
+            { name: "Timeline", path: "/" },
+            { name: branch?.label ?? "Branch", path: `/branch/${game.branch}` },
+            { name: game.title, path: `/game/${game.id}` },
+          ]),
+        },
       ],
     };
   },
 });
 
 function GameDetailPage() {
-  const { slug } = Route.useParams();
-  const game = getGameBySlug(slug);
-
-  if (!game) {
-    return (
-      <SlateFrame>
-        <div className="not-found">
-          <h1>404</h1>
-          <p>This game hasn't been chronicled yet.</p>
-          <Link to="/">Back to the Timeline</Link>
-        </div>
-      </SlateFrame>
-    );
-  }
-
+  const game = Route.useLoaderData();
   const branch = getBranch(game.branch);
   const related = getRelatedGames(game);
   const threads = getThreadsForGame(game.id);

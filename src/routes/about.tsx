@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
-    meta: [{ title: "About | Chronicle Slate" }],
+    meta: pageMeta(
+      "About | Chronicle Slate",
+      "An unofficial, fan-made research project about the Legend of Zelda timeline — original design, sourced content.",
+      "/about"
+    ),
   }),
 });
 

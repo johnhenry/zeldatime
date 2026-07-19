@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zeldatime.johnhenry.me/sitemap.xml

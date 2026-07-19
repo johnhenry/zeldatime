@@ -2,14 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
 import { glossary } from "~/data/glossary";
 import { getGameBySlug } from "~/data/games";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/glossary/")({
   component: GlossaryPage,
   head: () => ({
-    meta: [
-      { title: "Glossary | Chronicle Slate" },
-      { name: "description", content: "Key terms of the Zelda timeline, briefly defined and cross-linked." },
-    ],
+    meta: pageMeta(
+      "Glossary | Chronicle Slate",
+      "Key terms of the Zelda timeline, briefly defined and cross-linked.",
+      "/glossary"
+    ),
   }),
 });
 

@@ -1,10 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/codex/")({
   component: CodexIndexPage,
   head: () => ({
-    meta: [{ title: "Codex | Chronicle Slate" }],
+    meta: pageMeta(
+      "Codex | Chronicle Slate",
+      "The research library underpinning this project — five sourced papers on Zelda's timeline and Switch-era UI design.",
+      "/codex"
+    ),
   }),
 });
 

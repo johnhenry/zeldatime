@@ -4,6 +4,14 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { absoluteUrl } from "~/lib/site";
+import { websiteLd } from "~/lib/jsonld";
+import { NotFound } from "~/components/NotFound";
+
+const DEFAULT_TITLE = "Chronicle Slate — An Interactive Zelda Timeline";
+const DEFAULT_DESCRIPTION =
+  "An original, fan-made interactive timeline of every Legend of Zelda game, from the Skyward Sword origin through the Age of Calamity divergence.";
+const DEFAULT_OG_IMAGE = absoluteUrl("/icon-512.png");
 
 export const Route = createRootRoute({
   head: () => ({
@@ -12,14 +20,29 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       // Fandom's CDN degrades hotlinked images to 300px when a Referer is sent.
       { name: "referrer", content: "no-referrer" },
-      { title: "Chronicle Slate — An Interactive Zelda Timeline" },
-      {
-        name: "description",
-        content:
-          "An original, fan-made interactive timeline of every Legend of Zelda game, from the Skyward Sword origin through the Age of Calamity divergence.",
-      },
+      { name: "theme-color", content: "#0b0f14" },
+      { title: DEFAULT_TITLE },
+      { name: "description", content: DEFAULT_DESCRIPTION },
+
+      // Open Graph / Twitter defaults — per-page routes override title/description/image.
+      { property: "og:site_name", content: "Chronicle Slate" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: DEFAULT_TITLE },
+      { property: "og:description", content: DEFAULT_DESCRIPTION },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
+      { property: "og:url", content: absoluteUrl("/") },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: DEFAULT_TITLE },
+      { name: "twitter:description", content: DEFAULT_DESCRIPTION },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
+
+      { "script:ld+json": websiteLd() },
     ],
     links: [
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -33,6 +56,7 @@ export const Route = createRootRoute({
     ],
   }),
   component: RootComponent,
+  notFoundComponent: () => <NotFound />,
 });
 
 function RootComponent() {

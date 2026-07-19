@@ -1,40 +1,55 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
 import { GameCard } from "~/components/GameCard";
 import { branches, getBranch } from "~/data/timeline";
 import { getGamesByBranch } from "~/data/games";
 import { getThreadsForBranch } from "~/data/threads";
 import type { Branch } from "~/types/game";
+import { absoluteUrl, ogImageFor } from "~/lib/site";
+import { articleLd, breadcrumbLd } from "~/lib/jsonld";
 
 export const Route = createFileRoute("/branch/$id")({
   component: BranchDetailPage,
-  head: ({ params }) => {
+  loader: ({ params }) => {
     const branch = getBranch(params.id);
+    if (!branch) throw notFound();
+    return branch;
+  },
+  head: ({ params, loaderData }) => {
+    const branch = loaderData ?? getBranch(params.id);
+    if (!branch) return { meta: [{ title: "Branch Not Found | Chronicle Slate" }] };
+
+    const title = `${branch.label} | Chronicle Slate`;
+    const games = getGamesByBranch(branch.id as Branch);
+    const ogImage = ogImageFor(games.flatMap((g) => [g.keyArt, g.image])) ?? absoluteUrl("/icon-512.png");
+
     return {
       meta: [
-        { title: branch ? `${branch.label} | Chronicle Slate` : "Branch Not Found | Chronicle Slate" },
-        { name: "description", content: branch?.summary ?? "Branch not found" },
+        { title },
+        { name: "description", content: branch.summary },
+        { property: "og:type", content: "article" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: branch.summary },
+        { property: "og:image", content: ogImage },
+        { property: "og:url", content: absoluteUrl(`/branch/${branch.id}`) },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: branch.summary },
+        { name: "twitter:image", content: ogImage },
+        { "script:ld+json": articleLd({ title: branch.label, description: branch.summary, path: `/branch/${branch.id}` }) },
+        {
+          "script:ld+json": breadcrumbLd([
+            { name: "Timeline", path: "/" },
+            { name: "Branches", path: "/branch" },
+            { name: branch.label, path: `/branch/${branch.id}` },
+          ]),
+        },
       ],
     };
   },
 });
 
 function BranchDetailPage() {
-  const { id } = Route.useParams();
-  const branch = getBranch(id);
-
-  if (!branch) {
-    return (
-      <SlateFrame>
-        <div className="not-found">
-          <h1>404</h1>
-          <p>No such branch in the chronicle.</p>
-          <Link to="/branch">All branches</Link>
-        </div>
-      </SlateFrame>
-    );
-  }
-
+  const branch = Route.useLoaderData();
   const games = getGamesByBranch(branch.id as Branch).sort((a, b) => a.timelineOrder - b.timelineOrder);
   const parent = branch.parent ? getBranch(branch.parent) : null;
   const children = branches.filter((b) => b.parent === branch.id);

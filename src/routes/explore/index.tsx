@@ -1,13 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
+import { pageMeta } from "~/lib/site";
 
 export const Route = createFileRoute("/explore/")({
   component: ExplorePage,
   head: () => ({
-    meta: [
-      { title: "Explore | Chronicle Slate" },
-      { name: "description", content: "Branches, threads, glossary, and stats — every way into the chronicle." },
-    ],
+    meta: pageMeta(
+      "Explore | Chronicle Slate",
+      "Branches, threads, glossary, and stats — every way into the chronicle.",
+      "/explore"
+    ),
   }),
 });
 

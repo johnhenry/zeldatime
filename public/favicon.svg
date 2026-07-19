@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8b24d"/>
+      <stop offset="100%" stop-color="#4fd1c5"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0b0f14"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="url(#g)" stroke-width="2" opacity="0.55"/>
+  <!-- A single trunk forking into three branches: the shared timeline emblem -->
+  <path d="M32 12 V30" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 30 L18 48" fill="none" stroke="#4caf7d" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 30 V48" fill="none" stroke="#3f8ec9" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 30 L46 48" fill="none" stroke="#a34a4a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="12" r="4.5" fill="#e8b24d"/>
+  <circle cx="18" cy="48" r="3.5" fill="#4caf7d"/>
+  <circle cx="32" cy="48" r="3.5" fill="#3f8ec9"/>
+  <circle cx="46" cy="48" r="3.5" fill="#a34a4a"/>
+</svg>
