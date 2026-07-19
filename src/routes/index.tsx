@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useMemo, useState } from "react";
 import { SlateFrame } from "~/components/SlateFrame";
-import { TimelineDiagram } from "~/components/TimelineDiagram";
+import { TimelineDiagram, type TimelineMode } from "~/components/TimelineDiagram";
 import { VerticalTimeline } from "~/components/VerticalTimeline";
 import { TimelineScrolly } from "~/components/scrolly/TimelineScrolly";
 import { EraLegend } from "~/components/EraLegend";
 import { FilterBar } from "~/components/FilterBar";
 import { games } from "~/data/games";
 import type { Canonicity } from "~/types/game";
+import { playConfirm } from "~/lib/sound";
 
 type SearchParams = {
   branch?: string;
@@ -29,6 +30,7 @@ function HomePage() {
   const [canonicity, setCanonicity] = useState<Canonicity | "all">(
     (search.canonicity as Canonicity | "all") ?? "all"
   );
+  const [mode, setMode] = useState<TimelineMode>("story");
 
   const filteredGames = useMemo(
     () =>
@@ -70,30 +72,57 @@ function HomePage() {
 
         <EraLegend />
 
-        <FilterBar
-          branch={branch}
-          canonicity={canonicity}
-          onBranchChange={(b) => {
-            setBranch(b);
-            syncUrl(b, canonicity);
-          }}
-          onCanonicityChange={(c) => {
-            setCanonicity(c);
-            syncUrl(branch, c);
-          }}
-          onClearAll={() => {
-            setBranch("all");
-            setCanonicity("all");
-            window.history.replaceState(null, "", "/");
-          }}
-          resultCount={filteredGames.length}
-        />
+        <div className="chart-controls">
+          <FilterBar
+            branch={branch}
+            canonicity={canonicity}
+            onBranchChange={(b) => {
+              setBranch(b);
+              syncUrl(b, canonicity);
+            }}
+            onCanonicityChange={(c) => {
+              setCanonicity(c);
+              syncUrl(branch, c);
+            }}
+            onClearAll={() => {
+              setBranch("all");
+              setCanonicity("all");
+              window.history.replaceState(null, "", "/");
+            }}
+            resultCount={filteredGames.length}
+          />
+
+          <div className="timeline-mode-toggle" role="group" aria-label="Timeline ordering">
+            <button
+              type="button"
+              className={mode === "story" ? "active" : ""}
+              aria-pressed={mode === "story"}
+              onClick={() => {
+                playConfirm();
+                setMode("story");
+              }}
+            >
+              Story order
+            </button>
+            <button
+              type="button"
+              className={mode === "release" ? "active" : ""}
+              aria-pressed={mode === "release"}
+              onClick={() => {
+                playConfirm();
+                setMode("release");
+              }}
+            >
+              Release order
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Full-bleed: the diagram deserves the whole viewport, not the 1100px column.
           Both orientations render; CSS media queries pick one (SSR-safe, no flash). */}
       <div className="timeline-bleed">
-        <TimelineDiagram games={filteredGames} />
+        <TimelineDiagram games={filteredGames} mode={mode} />
         <VerticalTimeline games={filteredGames} />
       </div>
     </SlateFrame>

@@ -2231,3 +2231,133 @@ body::before {
     padding: 8vh 12px 12px;
   }
 }
+
+/* ==========================================================================
+   Timeline hover/focus preview card
+   ========================================================================== */
+
+.timeline-preview {
+  position: absolute;
+  z-index: 20;
+  width: 240px;
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: var(--slate-850);
+  border: 1px solid;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+  pointer-events: none;
+  animation: preview-in 0.12s ease;
+}
+
+@keyframes preview-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.timeline-preview__art {
+  flex-shrink: 0;
+  width: 56px;
+  height: 76px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--slate-800);
+}
+
+.timeline-preview__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.timeline-preview__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-preview__body strong {
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+
+.timeline-preview__meta {
+  font-size: 0.72rem;
+  color: var(--slate-400);
+  margin: 2px 0 6px;
+}
+
+.timeline-preview__body p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--slate-200);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 719px) {
+  .timeline-preview {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Timeline mode toggle
+   ========================================================================== */
+
+.timeline-mode-toggle {
+  display: inline-flex;
+  border: 1px solid var(--slate-600);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.timeline-mode-toggle button {
+  background: none;
+  border: none;
+  color: var(--slate-400);
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.timeline-mode-toggle button.active {
+  background: var(--slate-800);
+  color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.chart-controls .filter-bar {
+  margin: 0;
+  flex: 1;
+  min-width: 280px;
+}
+
+@media (max-width: 719px) {
+  .chart-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Only drives the horizontal SVG diagram (hidden below 719px);
+     VerticalTimeline has no release-order layout, so showing this here
+     would be a dead control that looks broken when tapped. */
+  .timeline-mode-toggle {
+    display: none;
+  }
+}
