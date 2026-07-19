@@ -13,7 +13,7 @@ function CodexIndexPage() {
     <SlateFrame>
       <div className="codex-index">
         <h1>The Codex</h1>
-        <p>Two research papers underpin this project — read them in full below.</p>
+        <p>The research library underpinning this project — read every paper in full below.</p>
         <div className="codex-index__grid">
           <Link to="/codex/lore" className="codex-index__card">
             <h2>The Zelda Timeline</h2>
@@ -24,6 +24,20 @@ function CodexIndexPage() {
             <p>
               What makes BOTW, TOTK, Age of Calamity, and Age of Imprisonment's menus and maps
               tick — and how it shaped this site's own design.
+            </p>
+          </Link>
+          <Link to="/codex/unplaced" className="codex-index__card">
+            <h2>The Unplaced Era</h2>
+            <p>
+              Nine years, four major games, zero chart updates — reading Nintendo's silence as a
+              deliberate publishing strategy.
+            </p>
+          </Link>
+          <Link to="/codex/species" className="codex-index__card">
+            <h2>A Natural History of Hyrule</h2>
+            <p>
+              Zora into Rito, Kokiri into Korok — how Nintendo uses species evolution as its
+              timeline's clock.
             </p>
           </Link>
         </div>

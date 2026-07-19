@@ -1677,3 +1677,91 @@ a:hover {
 .scrolly--active .scrolly__card {
   max-width: min(560px, 42vw);
 }
+
+/* ==========================================================================
+   Ambient page-level texture (behind everything, above the base gradients)
+   ========================================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.035;
+}
+
+/* ==========================================================================
+   Scroll reveal (mobile-friendly)
+   ========================================================================== */
+
+.rv {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.rv-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/* ==========================================================================
+   Pixel scroll-walker
+   ========================================================================== */
+
+.scroll-walker {
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 60;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+.scroll-walker--walking {
+  opacity: 1;
+}
+
+.scroll-walker__frame--a,
+.scroll-walker__frame--b {
+  opacity: 0;
+}
+
+.scroll-walker--walking .scroll-walker__frame--a {
+  animation: walk-frame-a 0.36s steps(1) infinite;
+}
+
+.scroll-walker--walking .scroll-walker__frame--b {
+  animation: walk-frame-b 0.36s steps(1) infinite;
+}
+
+@keyframes walk-frame-a {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes walk-frame-b {
+  0%, 49% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+
+/* Threads hub grouping */
+
+.thread-kind-section {
+  margin-bottom: 44px;
+}
+
+.thread-kind-section__blurb {
+  color: var(--slate-400);
+  font-size: 0.9rem;
+  margin: -4px 0 18px;
+}
+
+.thread-card h3 {
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}

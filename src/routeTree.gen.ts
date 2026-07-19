@@ -16,7 +16,9 @@ import { Route as BranchIndexRouteImport } from './routes/branch/index'
 import { Route as BranchIdRouteImport } from './routes/branch/$id'
 import { Route as CodexIndexRouteImport } from './routes/codex/index'
 import { Route as CodexLoreRouteImport } from './routes/codex/lore'
+import { Route as CodexSpeciesRouteImport } from './routes/codex/species'
 import { Route as CodexUiRouteImport } from './routes/codex/ui'
+import { Route as CodexUnplacedRouteImport } from './routes/codex/unplaced'
 import { Route as ExploreIndexRouteImport } from './routes/explore/index'
 import { Route as GameSlugRouteImport } from './routes/game/$slug'
 import { Route as GlossaryIndexRouteImport } from './routes/glossary/index'
@@ -58,9 +60,19 @@ const CodexLoreRoute = CodexLoreRouteImport.update({
   path: '/codex/lore',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CodexSpeciesRoute = CodexSpeciesRouteImport.update({
+  id: '/codex/species',
+  path: '/codex/species',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CodexUiRoute = CodexUiRouteImport.update({
   id: '/codex/ui',
   path: '/codex/ui',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodexUnplacedRoute = CodexUnplacedRouteImport.update({
+  id: '/codex/unplaced',
+  path: '/codex/unplaced',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExploreIndexRoute = ExploreIndexRouteImport.update({
@@ -95,7 +107,9 @@ export interface FileRoutesByFullPath {
   '/stats': typeof StatsRoute
   '/branch/$id': typeof BranchIdRoute
   '/codex/lore': typeof CodexLoreRoute
+  '/codex/species': typeof CodexSpeciesRoute
   '/codex/ui': typeof CodexUiRoute
+  '/codex/unplaced': typeof CodexUnplacedRoute
   '/game/$slug': typeof GameSlugRoute
   '/threads/$id': typeof ThreadsIdRoute
   '/branch/': typeof BranchIndexRoute
@@ -110,7 +124,9 @@ export interface FileRoutesByTo {
   '/stats': typeof StatsRoute
   '/branch/$id': typeof BranchIdRoute
   '/codex/lore': typeof CodexLoreRoute
+  '/codex/species': typeof CodexSpeciesRoute
   '/codex/ui': typeof CodexUiRoute
+  '/codex/unplaced': typeof CodexUnplacedRoute
   '/game/$slug': typeof GameSlugRoute
   '/threads/$id': typeof ThreadsIdRoute
   '/branch': typeof BranchIndexRoute
@@ -126,7 +142,9 @@ export interface FileRoutesById {
   '/stats': typeof StatsRoute
   '/branch/$id': typeof BranchIdRoute
   '/codex/lore': typeof CodexLoreRoute
+  '/codex/species': typeof CodexSpeciesRoute
   '/codex/ui': typeof CodexUiRoute
+  '/codex/unplaced': typeof CodexUnplacedRoute
   '/game/$slug': typeof GameSlugRoute
   '/threads/$id': typeof ThreadsIdRoute
   '/branch/': typeof BranchIndexRoute
@@ -143,7 +161,9 @@ export interface FileRouteTypes {
     | '/stats'
     | '/branch/$id'
     | '/codex/lore'
+    | '/codex/species'
     | '/codex/ui'
+    | '/codex/unplaced'
     | '/game/$slug'
     | '/threads/$id'
     | '/branch/'
@@ -158,7 +178,9 @@ export interface FileRouteTypes {
     | '/stats'
     | '/branch/$id'
     | '/codex/lore'
+    | '/codex/species'
     | '/codex/ui'
+    | '/codex/unplaced'
     | '/game/$slug'
     | '/threads/$id'
     | '/branch'
@@ -173,7 +195,9 @@ export interface FileRouteTypes {
     | '/stats'
     | '/branch/$id'
     | '/codex/lore'
+    | '/codex/species'
     | '/codex/ui'
+    | '/codex/unplaced'
     | '/game/$slug'
     | '/threads/$id'
     | '/branch/'
@@ -189,7 +213,9 @@ export interface RootRouteChildren {
   StatsRoute: typeof StatsRoute
   BranchIdRoute: typeof BranchIdRoute
   CodexLoreRoute: typeof CodexLoreRoute
+  CodexSpeciesRoute: typeof CodexSpeciesRoute
   CodexUiRoute: typeof CodexUiRoute
+  CodexUnplacedRoute: typeof CodexUnplacedRoute
   GameSlugRoute: typeof GameSlugRoute
   ThreadsIdRoute: typeof ThreadsIdRoute
   BranchIndexRoute: typeof BranchIndexRoute
@@ -250,11 +276,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodexLoreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/codex/species': {
+      id: '/codex/species'
+      path: '/codex/species'
+      fullPath: '/codex/species'
+      preLoaderRoute: typeof CodexSpeciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/codex/ui': {
       id: '/codex/ui'
       path: '/codex/ui'
       fullPath: '/codex/ui'
       preLoaderRoute: typeof CodexUiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/codex/unplaced': {
+      id: '/codex/unplaced'
+      path: '/codex/unplaced'
+      fullPath: '/codex/unplaced'
+      preLoaderRoute: typeof CodexUnplacedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/explore/': {
@@ -301,7 +341,9 @@ const rootRouteChildren: RootRouteChildren = {
   StatsRoute: StatsRoute,
   BranchIdRoute: BranchIdRoute,
   CodexLoreRoute: CodexLoreRoute,
+  CodexSpeciesRoute: CodexSpeciesRoute,
   CodexUiRoute: CodexUiRoute,
+  CodexUnplacedRoute: CodexUnplacedRoute,
   GameSlugRoute: GameSlugRoute,
   ThreadsIdRoute: ThreadsIdRoute,
   BranchIndexRoute: BranchIndexRoute,

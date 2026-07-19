@@ -2,12 +2,16 @@ import type { ReactNode } from "react";
 import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
 import { TechTexture } from "~/components/TechTexture";
+import { ScrollWalker } from "~/components/ScrollWalker";
+import { useRevealOnScroll } from "~/components/useRevealOnScroll";
 
 interface SlateFrameProps {
   children: ReactNode;
 }
 
 export function SlateFrame({ children }: SlateFrameProps) {
+  useRevealOnScroll();
+
   return (
     <div className="slate-frame">
       <TechTexture />
@@ -18,6 +22,7 @@ export function SlateFrame({ children }: SlateFrameProps) {
       <Nav />
       <div className="slate-frame__body">{children}</div>
       <Footer />
+      <ScrollWalker />
     </div>
   );
 }

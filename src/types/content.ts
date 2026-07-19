@@ -15,7 +15,16 @@ export interface Connection {
   note?: string;
 }
 
-export type ThreadKind = "artifact" | "character" | "force" | "recurring";
+export type ThreadKind =
+  | "artifact"
+  | "character"
+  | "force"
+  | "recurring"
+  | "species"
+  | "item"
+  | "enemy"
+  | "wildlife"
+  | "place";
 
 export interface ThreadEntry {
   gameId: string;
