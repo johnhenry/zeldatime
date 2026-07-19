@@ -1,5 +1,6 @@
 import { branches } from "~/data/timeline";
 import type { Canonicity } from "~/types/game";
+import { playConfirm } from "~/lib/sound";
 
 interface FilterBarProps {
   branch: string;
@@ -20,7 +21,14 @@ export function FilterBar({
 }: FilterBarProps) {
   return (
     <div className="filter-bar panel">
-      <select value={branch} onChange={(e) => onBranchChange(e.target.value)} aria-label="Filter by branch">
+      <select
+        value={branch}
+        onChange={(e) => {
+          playConfirm();
+          onBranchChange(e.target.value);
+        }}
+        aria-label="Filter by branch"
+      >
         <option value="all">All branches</option>
         {branches.map((b) => (
           <option key={b.id} value={b.id}>

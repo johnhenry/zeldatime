@@ -1274,3 +1274,369 @@ a:hover {
   margin-bottom: 14px;
   color: var(--slate-100);
 }
+
+/* ==========================================================================
+   Vertical timeline (mobile) — CSS-only breakpoint toggle, SSR-safe
+   ========================================================================== */
+
+.timeline-vertical {
+  display: none;
+  padding: 8px 0 32px;
+}
+
+@media (max-width: 719px) {
+  .timeline-diagram-wrap {
+    display: none;
+  }
+
+  .timeline-vertical {
+    display: block;
+  }
+}
+
+.vt-branch {
+  margin-bottom: 36px;
+}
+
+.vt-branch__header h2 {
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+
+.vt-branch__fork {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  margin: 0 0 12px;
+}
+
+.vt-branch__games {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0 0 0 18px;
+  border-left: 2px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vt-game__link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--slate-100);
+}
+
+.vt-game__art {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(79, 209, 197, 0.15);
+}
+
+.vt-game__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.vt-game__text small {
+  color: var(--slate-400);
+  font-size: 0.78rem;
+}
+
+/* Broader mobile comfort */
+
+@media (max-width: 719px) {
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .filter-bar {
+    padding: 12px 14px;
+  }
+
+  .filter-bar__count {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+
+  .detail-hero {
+    gap: 18px;
+  }
+
+  .game-pager {
+    flex-direction: column;
+  }
+
+  .game-pager__link {
+    max-width: 100%;
+  }
+
+  .connection-list__type {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+
+  .timeline-bleed {
+    padding: 0 20px;
+  }
+}
+
+/* ==========================================================================
+   Scrollytelling — static stacked baseline; .scrolly--active pins the stage
+   ========================================================================== */
+
+.scrolly {
+  position: relative;
+  margin: 24px 0 48px;
+}
+
+/* Static mode: no stage, steps stack with their own clusters. */
+.scrolly:not(.scrolly--active) .scrolly__stage {
+  display: none;
+}
+
+.scrolly__step {
+  margin: 0 auto 48px;
+  max-width: 900px;
+  padding: 0 24px;
+}
+
+.scrolly__card {
+  padding: 26px 30px;
+  max-width: 560px;
+}
+
+.scrolly__card-era {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.scrolly__card h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.scrolly__card p {
+  margin: 0;
+  color: var(--slate-200);
+}
+
+.scrolly-cluster {
+  text-align: center;
+}
+
+.scrolly-cluster__era {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.scrolly-cluster__medallions {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+.scrolly-medallion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--slate-200);
+}
+
+.scrolly-medallion img {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid;
+  border-color: inherit;
+  box-shadow: 0 0 22px rgba(79, 209, 197, 0.25);
+  transition: box-shadow 0.2s ease;
+}
+
+.scrolly-medallion:hover img {
+  box-shadow: var(--glow-cyan-strong);
+}
+
+.scrolly-medallion__label {
+  font-size: 0.85rem;
+  max-width: 140px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.scrolly__inline-cluster {
+  margin-top: 22px;
+}
+
+/* Active (pinned) mode */
+
+.scrolly--active .scrolly__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+.scrolly--active .scrolly__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+}
+
+.scrolly--active .scrolly__layer--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scrolly--active .scrolly__rail {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scrolly__rail {
+  display: none;
+}
+
+.scrolly--active .scrolly__rail {
+  display: flex;
+}
+
+.scrolly__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--slate-600);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Steps float over the pinned stage as spacers with a text card. */
+.scrolly--active .scrolly__steps {
+  position: relative;
+  z-index: 1;
+  margin-top: -100vh;
+}
+
+.scrolly--active .scrolly__step {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  max-width: 1200px;
+}
+
+.scrolly--active .scrolly__card {
+  background: rgba(16, 23, 32, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.scrolly--active .scrolly__inline-cluster {
+  display: none;
+}
+
+.chart-divider {
+  margin: 32px 0 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--slate-700);
+}
+
+.chart-divider h2 {
+  margin: 0 0 6px;
+}
+
+.chart-divider p {
+  color: var(--slate-400);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Page transitions (View Transitions API — progressive enhancement)
+   ========================================================================== */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.22s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation-name: vt-out;
+}
+
+::view-transition-new(root) {
+  animation-name: vt-in;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* Sound toggle */
+
+.sound-toggle {
+  background: none;
+  border: 1px solid var(--slate-600);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slate-400);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sound-toggle:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.sound-toggle--on {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}

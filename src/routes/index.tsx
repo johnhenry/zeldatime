@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useMemo, useState } from "react";
 import { SlateFrame } from "~/components/SlateFrame";
 import { TimelineDiagram } from "~/components/TimelineDiagram";
+import { VerticalTimeline } from "~/components/VerticalTimeline";
+import { TimelineScrolly } from "~/components/scrolly/TimelineScrolly";
 import { EraLegend } from "~/components/EraLegend";
 import { FilterBar } from "~/components/FilterBar";
 import { games } from "~/data/games";
@@ -53,9 +55,18 @@ function HomePage() {
             An interactive map of every Legend of Zelda game — from the Skyward Sword origin
             point through the three-way split at Ocarina of Time, to the still-unofficial
             placement of Breath of the Wild, Tears of the Kingdom, Age of Calamity, and Age of
-            Imprisonment.
+            Imprisonment. Scroll to walk the eras, or jump to the full chart below.
           </p>
         </section>
+      </div>
+
+      <TimelineScrolly />
+
+      <div className="container">
+        <div className="chart-divider">
+          <h2 className="section-title">Explore the full chart</h2>
+          <p>Every game, every branch, filterable — the complete chronicle at once.</p>
+        </div>
 
         <EraLegend />
 
@@ -79,9 +90,11 @@ function HomePage() {
         />
       </div>
 
-      {/* Full-bleed: the diagram deserves the whole viewport, not the 1100px column. */}
+      {/* Full-bleed: the diagram deserves the whole viewport, not the 1100px column.
+          Both orientations render; CSS media queries pick one (SSR-safe, no flash). */}
       <div className="timeline-bleed">
         <TimelineDiagram games={filteredGames} />
+        <VerticalTimeline games={filteredGames} />
       </div>
     </SlateFrame>
   );

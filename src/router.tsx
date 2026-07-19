@@ -6,6 +6,8 @@ export function getRouter() {
     routeTree,
     defaultPreload: "intent",
     scrollRestoration: true,
+    // View Transitions API: progressive enhancement, no-op where unsupported.
+    defaultViewTransition: true,
   });
 
   return router;

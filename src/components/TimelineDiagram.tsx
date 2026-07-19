@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { line as d3line, curveMonotoneX, curveBasis } from "d3-shape";
 import type { Game } from "~/types/game";
 import { branches, getBranch } from "~/data/timeline";
+import { playHover, playTransition } from "~/lib/sound";
 
 const LANE_ORDER = [
   "pre-split",
@@ -218,8 +219,14 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
                 key={p.game.id}
                 className="timeline-node"
                 transform={`translate(${p.x}, ${p.y})`}
-                onClick={() => navigate({ to: "/game/$slug", params: { slug: p.game.id } })}
-                onMouseEnter={() => setHovered(p.game.id)}
+                onClick={() => {
+                  playTransition();
+                  navigate({ to: "/game/$slug", params: { slug: p.game.id } });
+                }}
+                onMouseEnter={() => {
+                  setHovered(p.game.id);
+                  playHover();
+                }}
                 onMouseLeave={() => setHovered((h) => (h === p.game.id ? null : h))}
                 tabIndex={0}
                 onKeyDown={(e) => {

@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { SoundToggle } from "~/components/SoundToggle";
+import { playConfirm } from "~/lib/sound";
 
 export function Nav() {
   return (
@@ -8,12 +10,19 @@ export function Nav() {
         Chronicle Slate
       </Link>
       <nav className="nav__links">
-        <Link to="/" activeOptions={{ exact: true }}>
+        <Link to="/" activeOptions={{ exact: true }} onClick={() => playConfirm()}>
           Timeline
         </Link>
-        <Link to="/explore">Explore</Link>
-        <Link to="/codex">Codex</Link>
-        <Link to="/about">About</Link>
+        <Link to="/explore" onClick={() => playConfirm()}>
+          Explore
+        </Link>
+        <Link to="/codex" onClick={() => playConfirm()}>
+          Codex
+        </Link>
+        <Link to="/about" onClick={() => playConfirm()}>
+          About
+        </Link>
+        <SoundToggle />
       </nav>
     </header>
   );
