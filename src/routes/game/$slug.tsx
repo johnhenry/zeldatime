@@ -2,8 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SlateFrame } from "~/components/SlateFrame";
 import { GameCard } from "~/components/GameCard";
 import { ConfidenceBadge } from "~/components/ConfidenceBadge";
+import { GameBackground } from "~/components/GameBackground";
+import { GamePager } from "~/components/GamePager";
+import { ConnectionList } from "~/components/ConnectionList";
 import { getGameBySlug, getRelatedGames } from "~/data/games";
 import { getBranch } from "~/data/timeline";
+import { getThreadsForGame } from "~/data/threads";
+import { getTermsForGame } from "~/data/glossary";
 
 export const Route = createFileRoute("/game/$slug")({
   component: GameDetailPage,
@@ -36,9 +41,12 @@ function GameDetailPage() {
 
   const branch = getBranch(game.branch);
   const related = getRelatedGames(game);
+  const threads = getThreadsForGame(game.id);
+  const terms = getTermsForGame(game.id);
 
   return (
     <SlateFrame>
+      <GameBackground game={game} />
       <article className="detail-page">
         <div className="detail-hero" style={{ borderColor: branch?.color }}>
           {game.image && (
@@ -47,9 +55,14 @@ function GameDetailPage() {
             </div>
           )}
           <div className="detail-hero__info">
-            <p className="detail-hero__branch" style={{ color: branch?.color }}>
-              {branch?.label}
-            </p>
+            <Link
+              to="/branch/$id"
+              params={{ id: game.branch }}
+              className="detail-hero__branch"
+              style={{ color: branch?.color }}
+            >
+              {branch?.label} →
+            </Link>
             <h1>{game.title}</h1>
             <p className="detail-hero__meta">
               {game.releaseDate} &middot; {game.platform}
@@ -69,14 +82,14 @@ function GameDetailPage() {
 
         {game.sourcingNotes && (
           <section className="detail-sourcing">
-            <h2>Placement Reasoning</h2>
+            <h2 className="section-title">Placement Reasoning</h2>
             <p>{game.sourcingNotes}</p>
           </section>
         )}
 
         {game.trivia.length > 0 && (
           <section className="detail-trivia">
-            <h2>Notable &amp; Interesting</h2>
+            <h2 className="section-title">Notable &amp; Interesting</h2>
             <ul>
               {game.trivia.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -85,9 +98,42 @@ function GameDetailPage() {
           </section>
         )}
 
+        {(game.connections?.length ?? 0) > 0 && (
+          <section className="detail-connections">
+            <h2 className="section-title">Connections</h2>
+            <ConnectionList game={game} />
+          </section>
+        )}
+
+        {threads.length > 0 && (
+          <section className="detail-threads">
+            <h2 className="section-title">Part of these threads</h2>
+            <div className="chip-row">
+              {threads.map((t) => (
+                <Link key={t.id} to="/threads/$id" params={{ id: t.id }} className="chip chip--thread">
+                  {t.title}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {terms.length > 0 && (
+          <section className="detail-terms">
+            <h2 className="section-title">Key terms</h2>
+            <div className="chip-row">
+              {terms.map((t) => (
+                <Link key={t.id} to="/glossary" hash={t.id} className="chip chip--term">
+                  {t.term}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {related.length > 0 && (
           <section className="detail-related">
-            <h2>Also on the {branch?.label}</h2>
+            <h2 className="section-title">Also on the {branch?.label}</h2>
             <div className="game-grid">
               {related.map((g) => (
                 <GameCard key={g.id} game={g} />
@@ -95,6 +141,8 @@ function GameDetailPage() {
             </div>
           </section>
         )}
+
+        <GamePager game={game} />
       </article>
     </SlateFrame>
   );

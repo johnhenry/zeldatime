@@ -11,6 +11,7 @@ export function Nav() {
         <Link to="/" activeOptions={{ exact: true }}>
           Timeline
         </Link>
+        <Link to="/explore">Explore</Link>
         <Link to="/codex">Codex</Link>
         <Link to="/about">About</Link>
       </nav>

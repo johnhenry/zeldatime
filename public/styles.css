@@ -838,3 +838,439 @@ a:hover {
     display: none;
   }
 }
+
+/* ==========================================================================
+   Game page backgrounds
+   ========================================================================== */
+
+.game-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.game-bg__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+}
+
+.game-bg--blur .game-bg__image {
+  filter: blur(28px) saturate(1.15) brightness(0.75);
+  transform: scale(1.15);
+}
+
+.game-bg--keyart .game-bg__image {
+  filter: saturate(1.05) brightness(0.8);
+}
+
+.game-bg__tint,
+.game-bg__texture,
+.game-bg__fade {
+  position: absolute;
+  inset: 0;
+}
+
+.game-bg__texture {
+  background-image: var(--tex-circuit);
+  background-size: 320px 320px;
+  opacity: 0.1;
+}
+
+.game-bg__fade {
+  background: var(--grad-fade-slate);
+}
+
+/* ==========================================================================
+   Chips
+   ========================================================================== */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--slate-600);
+  background: var(--slate-850);
+  color: var(--slate-200);
+  font-size: 0.85rem;
+}
+
+.chip:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.chip--thread {
+  border-color: var(--accent-amber-dim);
+}
+
+/* ==========================================================================
+   Connections list
+   ========================================================================== */
+
+.connection-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.connection-list__item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 12px 16px;
+  background: var(--slate-850);
+  border: 1px solid var(--slate-700);
+  border-radius: var(--radius-md);
+}
+
+.connection-list__type {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate-400);
+  min-width: 150px;
+}
+
+.connection-list__target {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.connection-list__target img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--slate-600);
+}
+
+.connection-list__note {
+  flex-basis: 100%;
+  font-size: 0.85rem;
+  color: var(--slate-400);
+}
+
+/* ==========================================================================
+   Game pager
+   ========================================================================== */
+
+.game-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 48px 0 24px;
+  border-top: 1px solid var(--slate-700);
+  padding-top: 24px;
+}
+
+.game-pager__link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--slate-100);
+  max-width: 46%;
+}
+
+.game-pager__link img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--slate-600);
+  flex-shrink: 0;
+}
+
+.game-pager__link:hover img {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.game-pager__link span {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-pager__link small {
+  color: var(--slate-400);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.game-pager__link--next {
+  text-align: right;
+  margin-left: auto;
+}
+
+.game-pager__spacer {
+  flex: 1;
+}
+
+/* ==========================================================================
+   Section pages (explore/branch/threads/glossary/stats)
+   ========================================================================== */
+
+.section-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-page__intro {
+  color: var(--slate-200);
+  font-size: 1.05rem;
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+.explore-grid,
+.branch-grid,
+.thread-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.explore-card,
+.branch-card,
+.thread-card {
+  display: block;
+  padding: 24px;
+  color: var(--slate-100);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.explore-card:hover,
+.branch-card:hover,
+.thread-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan), var(--shadow-panel);
+  color: var(--slate-100);
+}
+
+.explore-card h2,
+.branch-card h2,
+.thread-card h2 {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+.explore-card p,
+.branch-card p,
+.thread-card p {
+  color: var(--slate-200);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.branch-card {
+  position: relative;
+  padding-left: 28px;
+}
+
+.branch-card__rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.branch-card__count,
+.thread-card__count {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--slate-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.thread-card__kind {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber);
+  margin-bottom: 8px;
+}
+
+/* Branch detail */
+
+.branch-page__hero {
+  border-left: 3px solid;
+  padding: 8px 0 8px 20px;
+  margin-bottom: 32px;
+}
+
+.branch-page__hero h1 {
+  margin: 0 0 8px;
+}
+
+.branch-page__summary {
+  font-size: 1.05rem;
+  color: var(--slate-200);
+  max-width: 640px;
+}
+
+.branch-page__split,
+.branch-page__lineage {
+  font-size: 0.9rem;
+  color: var(--slate-400);
+  margin: 6px 0;
+}
+
+.branch-page__arc {
+  margin-bottom: 40px;
+}
+
+.branch-page__arc p {
+  color: var(--slate-200);
+}
+
+/* Thread detail */
+
+.thread-entries {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thread-entry {
+  border-left: 3px solid var(--slate-600);
+  padding: 12px 0 12px 20px;
+}
+
+.thread-entry__game {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--slate-100);
+}
+
+.thread-entry__game img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--slate-600);
+}
+
+.thread-entry__game span {
+  display: flex;
+  flex-direction: column;
+}
+
+.thread-entry__game small {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.thread-entry__note {
+  margin: 10px 0 0;
+  color: var(--slate-200);
+  font-size: 0.92rem;
+}
+
+/* Glossary */
+
+.glossary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+
+.glossary-entry {
+  padding: 20px 24px;
+  scroll-margin-top: 90px;
+}
+
+.glossary-entry dt {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--accent-amber);
+}
+
+.glossary-entry dd {
+  margin: 0;
+}
+
+.glossary-entry dd p {
+  color: var(--slate-200);
+  margin: 0 0 12px;
+}
+
+/* Stats */
+
+.stats-callouts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-callout {
+  padding: 22px;
+  text-align: center;
+}
+
+.stat-callout__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: var(--grad-holo);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-callout__label {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--slate-400);
+}
+
+.stats-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.bar-chart {
+  padding: 20px 22px;
+  margin: 0;
+}
+
+.bar-chart__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--slate-100);
+}
