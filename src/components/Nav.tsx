@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { SoundToggle } from "~/components/SoundToggle";
+import { CommandPalette } from "~/components/CommandPalette";
 import { playConfirm } from "~/lib/sound";
 
 const ACTIVE_PROPS = { "aria-current": "page" as const };
@@ -24,6 +25,7 @@ export function Nav() {
         <Link to="/about" activeProps={ACTIVE_PROPS} onClick={() => playConfirm()}>
           About
         </Link>
+        <CommandPalette />
         <SoundToggle />
       </nav>
     </header>
