@@ -1714,12 +1714,17 @@ body::before {
 .scroll-walker {
   position: fixed;
   left: 18px;
-  bottom: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   z-index: 60;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  /* Promote to its own GPU layer so mobile Safari keeps it glued to the
+     viewport edge during momentum/rubber-band scroll instead of briefly
+     lagging behind and appearing to travel with the page. */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .scroll-walker--walking {
@@ -1731,6 +1736,9 @@ body::before {
   opacity: 0;
 }
 
+/* A small vertical bob synced to the frame swap reads as a step, not a
+   left/right shift — the actual facing direction is handled separately
+   by the wrapper's scaleX(dir). */
 .scroll-walker--walking .scroll-walker__frame--a {
   animation: walk-frame-a 0.36s steps(1) infinite;
 }
@@ -1740,13 +1748,13 @@ body::before {
 }
 
 @keyframes walk-frame-a {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  0%, 49% { opacity: 1; transform: translateY(0); }
+  50%, 100% { opacity: 0; transform: translateY(-1px); }
 }
 
 @keyframes walk-frame-b {
-  0%, 49% { opacity: 0; }
-  50%, 100% { opacity: 1; }
+  0%, 49% { opacity: 0; transform: translateY(0); }
+  50%, 100% { opacity: 1; transform: translateY(-1px); }
 }
 
 /* Threads hub grouping */
