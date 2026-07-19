@@ -2,6 +2,9 @@
 
 *This paper exists to close a gap our own earlier research flagged: our first UI/UX pass could only report the critic-level summary that Age of Imprisonment's menus are "near-identical to BOTW/TOTK" — nobody had done the element-by-element teardown. This is that teardown, built from post-launch strategy guides, wikis, and reviews and run through the same adversarial verification as every other paper in this Codex. It gets much further than the first pass — and it's honest about exactly where it still hits a wall.*
 
+![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch)
+*Hyrule Warriors: Age of Imprisonment (2025, Switch 2) — official launch key art.*
+
 ## What this paper adds
 
 The original research found only a shape: "the menus look like TOTK's." Nine months of post-launch guide-writing later, the shape has detail. We can now describe, specifically:
@@ -27,6 +30,9 @@ Powerful enemies — what the game calls "Dangerous Enemies" — get their own o
 Sync Strikes are the headline new mechanic layered onto BOTW/TOTK's inherited visual language. Two nearby characters build a shared **Sync Gauge**; once it's full, pressing **L** triggers a team-up attack. Nintendo Life describes the gauge pulsating blue in a screen corner once ready. The mechanic is introduced early and deliberately: the very first Sync Strike, with Sonia, unlocks mid-battle in the Chapter 1 tutorial fight once boss Rauru's health drops to roughly 25% — the game teaches the system by scripting its first use rather than leaving you to discover it.
 
 ## Zonai devices: equip, resource, fire
+
+![Tears of the Kingdom box art](https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg)
+*Tears of the Kingdom (2023) — the game whose Zonai-device paradigm Age of Imprisonment carries forward almost unchanged.*
 
 TOTK's Zonai-device paradigm carries forward with a genuine interface change: rather than a radial wheel, devices are assigned per-character through an Inventory/Special Actions menu to a face button or to **ZR** (guides specifically recommend ZR, since face buttons are needed for each character's Unique Skills). In battle, you activate the assigned device by holding **R** or pressing ZR directly.
 

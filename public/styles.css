@@ -1773,3 +1773,97 @@ body::before {
   font-size: 1.15rem;
   margin: 0 0 8px;
 }
+
+/* ==========================================================================
+   Icon Key
+   ========================================================================== */
+
+.icon-key {
+  margin-bottom: 40px;
+  padding: 24px 26px;
+}
+
+.icon-key__title {
+  margin-top: 0;
+}
+
+.icon-key__disclaimer {
+  color: var(--slate-400);
+  font-size: 0.88rem;
+  max-width: 640px;
+  margin: 0 0 20px;
+}
+
+.icon-key__group {
+  margin-bottom: 22px;
+}
+
+.icon-key__group:last-child {
+  margin-bottom: 0;
+}
+
+.icon-key__group h3 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+  margin: 0 0 12px;
+}
+
+.icon-key__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.icon-key__entry {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease;
+}
+
+.icon-key__entry:hover {
+  background: var(--slate-800);
+}
+
+.icon-key__glyph {
+  flex-shrink: 0;
+}
+
+.icon-key__text strong {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.icon-key__text p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Images embedded in essay markdown
+   ========================================================================== */
+
+.markdown-doc img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 28px auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-700);
+  box-shadow: var(--shadow-panel);
+}
+
+.markdown-doc p:has(> img:only-child) {
+  text-align: center;
+}
+
+.markdown-doc em:has(> img) {
+  display: block;
+}

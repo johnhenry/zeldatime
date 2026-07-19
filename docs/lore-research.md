@@ -8,7 +8,13 @@ Nintendo has published exactly **two** series-spanning timeline documents: the 2
 
 ## 2. The shared trunk
 
+![Skyward Sword box art](https://upload.wikimedia.org/wikipedia/en/9/99/Legend_of_Zelda_Skyward_Sword_boxart.png)
+*Skyward Sword (2011) — chronologically first in the entire series, official chart included.*
+
 Before the timeline splits, all three branches share one linear history: **Skyward Sword** (the mythic origin point, where the goddess Hylia's fight against the demon Demise sets the entire series' reincarnation cycle in motion) → **The Minish Cap** → **Four Swords** → **Ocarina of Time**. Ocarina of Time is the single fork point of the entire official timeline — not because of anything unusual about the game itself, but because of its ending.
+
+![Ocarina of Time box art](https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg)
+*Ocarina of Time (1998) — the single fork point of the entire official timeline.*
 
 ## 3. The three-way split
 
@@ -18,9 +24,17 @@ Ocarina of Time can be read three different ways, and Nintendo's chart treats al
 - **Adult Timeline** — Link defeats Ganon as an adult, but is sent back to his childhood and the warning is never given, so the gods later flood Hyrule to contain an escaped Ganon: *The Wind Waker* → *Phantom Hourglass* (the next day) → *Spirit Tracks* (roughly a century later, in New Hyrule).
 - **Downfall Timeline** — Link is defeated by Ganondorf, who claims the full Triforce: *A Link to the Past* → *Link's Awakening* → *Oracle of Seasons* → *Oracle of Ages* → *A Link Between Worlds* → *Tri Force Heroes* (per an Aonuma interview, a few years after A Link Between Worlds) → the original *The Legend of Zelda* (1986) → *Zelda II: The Adventure of Link*.
 
+| | | |
+|---|---|---|
+| ![Majora's Mask box art](https://upload.wikimedia.org/wikipedia/en/6/60/The_Legend_of_Zelda_-_Majora%27s_Mask_Box_Art.jpg) | ![The Wind Waker box art](https://upload.wikimedia.org/wikipedia/en/7/79/The_Legend_of_Zelda_The_Wind_Waker.jpg) | ![A Link to the Past box art](https://upload.wikimedia.org/wikipedia/en/2/21/The_Legend_of_Zelda_A_Link_to_the_Past_SNES_Game_Cover.jpg) |
+| *Child Timeline opener* | *Adult Timeline opener* | *Downfall Timeline opener* |
+
 One correction worth flagging explicitly, since it runs against a common fan assumption this project's own planning initially repeated: **A Link to the Past is not part of the pre-split "era of creation."** Both official charts place it as the *opening* title of the Downfall Timeline — a natural mistake, since ALttP was released in 1991, years before Ocarina of Time (1998), but the series' internal chronology and its release order are not the same thing.
 
 ## 4. Breath of the Wild and Tears of the Kingdom: deliberately unplaced
+
+![Breath of the Wild and Tears of the Kingdom box art side by side](https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg)
+*Breath of the Wild (2017) — placed after every branch, deliberately unspecified as to which one.*
 
 Both games are placed at a distant-future point *after* all three branches — but Nintendo has never said, and has explicitly declined to say, which branch precedes them. In a Famitsu interview (independently corroborated in English translation by Kotaku and in a near-primary translation by Source Gaming), producer Eiji Aonuma and director Hidemaro Fujibayashi were asked directly which timeline Breath of the Wild follows. Aonuma's answer: "That's... up to the player's imagination, isn't it?" TheGamer and Game Informer report Nintendo extending the identical stance to Tears of the Kingdom, with Aonuma describing it as "a puzzle the users will have to see if they can solve."
 
@@ -29,6 +43,11 @@ This is worth taking seriously as a *design choice*, not an oversight: Nintendo 
 ## 5. The ambiguous Switch-era titles
 
 This is the part of the timeline question Nintendo has simply never addressed on paper. Two additional Switch-era titles claim to sit somewhere in Zelda history, and neither has any official chart placement at all.
+
+| | |
+|---|---|
+| ![Age of Calamity key art](https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg) | ![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch) |
+| *Age of Calamity (2020)* | *Age of Imprisonment (2025)* |
 
 **Hyrule Warriors: Age of Calamity** (2020) depicts the Great Calamity — the Champions' battle against Ganon 100 years before Breath of the Wild — but tells it as an alternate history, implying its ending diverges from what Breath of the Wild's flashbacks establish actually happened. A full-text search of Zelda Wiki's official-chart-tracking Timeline page turns up zero references to Age of Calamity anywhere; it is not merely unplaced, it is *entirely absent* from the last chart Nintendo published (2017), which predates the game by three years and has not been revised since.
 
@@ -45,6 +64,9 @@ This is the part of the timeline question Nintendo has simply never addressed on
 | Hyrule Warriors: Age of Imprisonment | Semi-canon | **Speculative** | Marketed/reviewed as a prequel; no chart confirms it |
 
 ## 6. The Philips CD-i games: unambiguously non-canon
+
+![Link: The Faces of Evil box art](https://upload.wikimedia.org/wikipedia/en/d/d6/Link_facesofevil_packaging.jpg)
+*Link: The Faces of Evil (1993) — infamous today mostly for its animated cutscenes.*
 
 Three Zelda games were made for the Philips CD-i in the 1990s — *Link: The Faces of Evil*, *Zelda: The Wand of Gamelon*, and *Zelda's Adventure* — as the byproduct of a failed hardware partnership. When Nintendo and Philips' plans for a Nintendo-branded CD-ROM add-on collapsed, part of the settlement let Philips license Zelda characters for its own CD-i console. Nintendo's involvement reportedly extended only to approving character art; it had no hand in development. Series producer Eiji Aonuma has stated on record (in a 2013 interview, reproduced by Nintendo Life among others) that he doesn't think these games "really fit in the Zelda franchise." They have never appeared on any official timeline chart, and their non-canon status is about as close to formally confirmed as anything in this research.
 

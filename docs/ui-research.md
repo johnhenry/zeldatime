@@ -4,6 +4,9 @@
 
 ## 1. Breath of the Wild: the diegetic device, the non-diegetic HUD
 
+![Breath of the Wild box art](https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg)
+*Breath of the Wild (2017) — the diegetic Sheikah Slate over a minimal non-diegetic HUD.*
+
 Breath of the Wild's interface is built from two deliberately separated layers. The **Sheikah Slate** is a diegetic, in-world device: an ancient artifact Link physically carries that houses the map, camera/Hyrule Compendium, and rune abilities, and which other characters can see and react to in-fiction. Layered over the game world independently of that device sits a minimal, **non-diegetic HUD** — hearts, a stamina wheel, a minimap, and objective markers — chrome that exists for the player, not the character. The Game UI Database formally catalogues this combination as a "Flat 2.0" style, and independent UI/UX design writing agrees on the same two-layer framing: an immersive, physical device for deep interaction, and spare overlay chrome for moment-to-moment readability.
 
 This diegetic/non-diegetic split is the throughline of everything BOTW is praised for: a HUD that gets out of the way of the open world, and a menu system (the Slate's rune wheel, the map, the compendium) that feels like an object Link owns rather than a system laid over the game.
@@ -11,6 +14,9 @@ This diegetic/non-diegetic split is the throughline of everything BOTW is praise
 The praise comes with a durable complaint, though: **weapon durability**. Because weapons break quickly and must be constantly cycled, players are repeatedly forced into disruptive menu-digging or scavenging from downed enemies mid-combat — a widely repeated criticism of the game's otherwise-minimal UI philosophy, since the one system that breaks the "stay out of the way" promise is also one of the most frequent interactions in the game.
 
 ## 2. Tears of the Kingdom: more device, more menu
+
+![Tears of the Kingdom box art](https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg)
+*Tears of the Kingdom (2023) — the Purah Pad succeeds the Sheikah Slate, trading runes for Ultrahand/Fuse/Ascend/Recall/Autobuild.*
 
 TOTK's **Purah Pad** is a direct continuity device — it keeps the Sheikah Slate's core diegetic roles (map, camera, compendium recording) — but critics characterize it explicitly as a *functional downgrade* relative to the old Slate: several specific rune abilities (Magnesis, Stasis, Cryonis, Bombs) are gone, deliberately traded away to make room for the new Ultrahand/Fuse-era toolkit (Ultrahand, Fuse, Ascend, Recall, Autobuild).
 
@@ -22,11 +28,17 @@ The Autobuild feature draws its own specific, commonly repeated friction points:
 
 ## 3. Hyrule Warriors: Age of Calamity — BOTW's language, a musou HUD
 
+![Age of Calamity key art](https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg)
+*Age of Calamity (2020) — BOTW's Sheikah-tech visual language translated into a musou HUD.*
+
 Age of Calamity is a *Dynasty Warriors*-style ("musou") game, and its UI reflects that genre's structure layered over BOTW's visual language. The Game UI Database catalogues a formal taxonomy that splits the interface into distinct layers, matching the standard Warriors-series pattern: HUD/overlay elements during combat (minimap, player vitals, enemy health/damage/weak-point gauges), an in-mission tactical **Area Map** for navigating large battlefields, and a separate overworld **World Map**/level-select screen distinct from the in-mission map. Pre-release screenshots (September 2020, ahead of the game's November 2020 launch) specifically showcased character-switching UI and map design as a "first look" at how BOTW's aesthetic would carry into a musou HUD.
 
 In practice, reviewers found the in-battle minimap clearly legible even in handheld mode on the Switch's small screen, aided by a dedicated zoom control (a left-stick click) for reading complex, unit-dense battle arenas. The recurring complaint is **legibility in darker levels**: nighttime and indoor missions make enemies and terrain harder to distinguish on the minimap, a problem reviewers specifically called out as worse when playing undocked.
 
 ## 4. Hyrule Warriors: Age of Imprisonment — shipped, not upcoming
+
+![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch)
+*Age of Imprisonment (2025) — see [The Maps of the Imprisoning War](/codex/aoi-maps) for the full element-by-element teardown.*
 
 **Correction to an earlier assumption in this project's planning:** Age of Imprisonment is not a speculative, unreleased "2026 preview" title. It shipped **November 6, 2025** for Nintendo Switch 2, has been reviewed by outlets including Nintendo Life and RPGSite, and had shipped over 1 million copies by January 2026.
 

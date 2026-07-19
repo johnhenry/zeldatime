@@ -8,11 +8,20 @@ Nintendo rarely dates anything in Zelda. What it does instead — consistently, 
 
 ## The flood's children: Zora → Rito, Kokiri → Korok
 
+![The Wind Waker box art](https://upload.wikimedia.org/wikipedia/en/7/79/The_Legend_of_Zelda_The_Wind_Waker.jpg)
+*The Wind Waker (2002) — debut of the Rito, framed by Hyrule Historia as flood-evolved Zora.*
+
 The Adult Timeline's Great Flood is the series' most explicit evolutionary event. *Hyrule Historia* frames The Wind Waker's bird-like **Rito** as descendants of the aquatic **Zora** — an ocean-covered world having, paradoxically, pushed its water people into the sky. The same flood turns the **Kokiri**, Ocarina of Time's eternal forest children, into the **Koroks**: walking leaf-spirits who migrate with the Great Deku Tree and no longer resemble anything human.
+
+![Breath of the Wild box art](https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg)
+*Breath of the Wild (2017) — puts Zora and Rito on screen simultaneously, no comment offered.*
 
 Both transformations made in-fiction sense *as long as they stayed on the Adult branch*. Then Breath of the Wild — deliberately unplaced on any branch — put Zora and Rito on screen **simultaneously**, in the same Hyrule, with no comment. If the Rito evolved *from* the Zora, their coexistence is a paradox on two of the three branches. Community readings split three ways: BOTW descends from a merged or convergent future where both lineages exist; the BOTW Rito are an unrelated species with a reused name; or — the reading this site finds most consistent with Nintendo's stated posture — the contradiction is intentional ambiguity, one more removed answer. The [Zora & Rito thread](/threads/zora-and-rito) traces every appearance.
 
 ## The constants: Gorons, Gerudo, Sheikah
+
+![Ocarina of Time box art](https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg)
+*Ocarina of Time (1998) — debut of the Gorons, Gerudo, and the Sheikah's shadow-tribe era.*
 
 Against the flood's shapeshifters, three peoples are notable for *refusing* to change:
 
