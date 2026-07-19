@@ -26,8 +26,7 @@ Ocarina of Time can be read three different ways, and Nintendo's chart treats al
 
 | | | |
 |---|---|---|
-| ![Majora's Mask box art](https://upload.wikimedia.org/wikipedia/en/6/60/The_Legend_of_Zelda_-_Majora%27s_Mask_Box_Art.jpg) | ![The Wind Waker box art](https://upload.wikimedia.org/wikipedia/en/7/79/The_Legend_of_Zelda_The_Wind_Waker.jpg) | ![A Link to the Past box art](https://upload.wikimedia.org/wikipedia/en/2/21/The_Legend_of_Zelda_A_Link_to_the_Past_SNES_Game_Cover.jpg) |
-| *Child Timeline opener* | *Adult Timeline opener* | *Downfall Timeline opener* |
+| ![Majora's Mask box art](https://upload.wikimedia.org/wikipedia/en/6/60/The_Legend_of_Zelda_-_Majora%27s_Mask_Box_Art.jpg) *Child Timeline opener* | ![The Wind Waker box art](https://upload.wikimedia.org/wikipedia/en/7/79/The_Legend_of_Zelda_The_Wind_Waker.jpg) *Adult Timeline opener* | ![A Link to the Past box art](https://upload.wikimedia.org/wikipedia/en/2/21/The_Legend_of_Zelda_A_Link_to_the_Past_SNES_Game_Cover.jpg) *Downfall Timeline opener* |
 
 One correction worth flagging explicitly, since it runs against a common fan assumption this project's own planning initially repeated: **A Link to the Past is not part of the pre-split "era of creation."** Both official charts place it as the *opening* title of the Downfall Timeline — a natural mistake, since ALttP was released in 1991, years before Ocarina of Time (1998), but the series' internal chronology and its release order are not the same thing.
 
@@ -46,8 +45,7 @@ This is the part of the timeline question Nintendo has simply never addressed on
 
 | | |
 |---|---|
-| ![Age of Calamity key art](https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg) | ![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch) |
-| *Age of Calamity (2020)* | *Age of Imprisonment (2025)* |
+| ![Age of Calamity key art](https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg) *Age of Calamity (2020)* | ![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch) *Age of Imprisonment (2025)* |
 
 **Hyrule Warriors: Age of Calamity** (2020) depicts the Great Calamity — the Champions' battle against Ganon 100 years before Breath of the Wild — but tells it as an alternate history, implying its ending diverges from what Breath of the Wild's flashbacks establish actually happened. A full-text search of Zelda Wiki's official-chart-tracking Timeline page turns up zero references to Age of Calamity anywhere; it is not merely unplaced, it is *entirely absent* from the last chart Nintendo published (2017), which predates the game by three years and has not been revised since.
 

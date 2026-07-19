@@ -7,7 +7,7 @@ export function GameCard({ game }: { game: Game }) {
   const branch = getBranch(game.branch);
 
   return (
-    <Link to="/game/$slug" params={{ slug: game.id }} className="game-card">
+    <Link to="/game/$slug" params={{ slug: game.id }} className="game-card panel">
       <div className="game-card__branch" style={{ backgroundColor: branch?.color }} aria-hidden="true" />
       {game.image && (
         <div className="game-card__art">

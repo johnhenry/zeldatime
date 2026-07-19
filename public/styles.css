@@ -788,6 +788,16 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* Plain text/data tables (not the image galleries below) scroll internally
+   on narrow screens instead of blowing out the page width. `display:block`
+   on <table> still gets an anonymous table box generated around its
+   table-row-group children, so tabular alignment survives. */
+.markdown-doc table:not(:has(img)) {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .markdown-doc th,
 .markdown-doc td {
   border: 1px solid var(--slate-700);
@@ -1779,8 +1789,14 @@ body::before {
    ========================================================================== */
 
 .icon-key {
-  margin-bottom: 40px;
-  padding: 24px 26px;
+  margin-bottom: 52px;
+  padding: 34px 38px;
+}
+
+@media (max-width: 719px) {
+  .icon-key {
+    padding: 24px 20px;
+  }
 }
 
 .icon-key__title {
@@ -1795,7 +1811,7 @@ body::before {
 }
 
 .icon-key__group {
-  margin-bottom: 22px;
+  margin-bottom: 30px;
 }
 
 .icon-key__group:last-child {
@@ -1813,14 +1829,14 @@ body::before {
 .icon-key__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 14px;
+  gap: 20px;
 }
 
 .icon-key__entry {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: flex-start;
-  padding: 10px;
+  padding: 14px;
   border-radius: var(--radius-sm);
   transition: background 0.15s ease;
 }
@@ -1862,6 +1878,45 @@ body::before {
 
 .markdown-doc p:has(> img:only-child) {
   text-align: center;
+}
+
+/* Image-comparison "tables" (each cell = one image + its caption) become a
+   responsive gallery: side-by-side on desktop, full-width stacked cards on
+   mobile, instead of squeezing images into narrow table columns. */
+.markdown-doc table:has(img) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  border: none;
+  margin: 28px 0;
+}
+
+.markdown-doc table:has(img) thead {
+  display: none;
+}
+
+.markdown-doc table:has(img) tbody,
+.markdown-doc table:has(img) tr {
+  display: contents;
+}
+
+.markdown-doc table:has(img) td {
+  flex: 1 1 220px;
+  border: none;
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
+}
+
+.markdown-doc table:has(img) img {
+  margin: 0 auto 10px;
+  width: 100%;
+}
+
+.markdown-doc table:has(img) em {
+  display: block;
+  color: var(--slate-400);
+  font-size: 0.85rem;
 }
 
 .markdown-doc em:has(> img) {

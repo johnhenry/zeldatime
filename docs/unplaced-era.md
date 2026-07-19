@@ -6,8 +6,8 @@
 
 | | | | |
 |---|---|---|---|
-| ![Breath of the Wild box art](https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg) | ![Age of Calamity key art](https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg) | ![Tears of the Kingdom box art](https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg) | ![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch) |
-| *2017* | *2020* | *2023* | *2025* |
+| ![Breath of the Wild box art](https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg) *2017* | ![Age of Calamity key art](https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg) *2020* | ![Tears of the Kingdom box art](https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg) *2023* | ![Age of Imprisonment key art](https://assets.nintendo.com/image/upload/c_fill,w_1600/q_auto:best/f_auto/ncom/en_US/articles/2025/the-battle-begins-in-hyrule-warriors-age-of-imprisonment/2250x1266_HWAOI_Launch) *2025* |
+
 *The four titles that shipped entirely outside any Nintendo-published timeline chart.*
 
 Nintendo has published exactly two series-spanning timeline charts: *Hyrule Historia* (2011) and a revised chart in the *Zelda Encyclopedia* (2017). Since then — nothing. Four major releases now exist entirely outside any official map of the series' history:
