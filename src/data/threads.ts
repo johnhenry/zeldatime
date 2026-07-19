@@ -421,6 +421,101 @@ export const threads: Thread[] = [
       { gameId: "breath-of-the-wild", note: "Navigated by torch smoke to reach Korok Forest and the waiting blade." },
     ],
   },
+
+  // ── Items & equipment (cont.) ─────────────────────────────────────────
+  {
+    id: "bow",
+    title: "The Bow",
+    kind: "item",
+    blurb:
+      "The series' oldest ranged answer to a locked door or a flying enemy — and the item elemental arrows have been riding shotgun on since Ocarina of Time.",
+    entries: [
+      { gameId: "the-legend-of-zelda", note: "Debut: bought from a shop alongside wooden arrows, with Silver Arrows the mandatory finisher against Ganon." },
+      { gameId: "a-link-to-the-past", note: "Silver Arrows return as the one thing that can actually hurt beast-form Ganon." },
+      { gameId: "ocarina-of-time", note: "The Fairy Bow, then Fire, Ice, and Light Arrow variants as an adult — the template every later elemental-arrow system copies." },
+      { gameId: "wind-waker", note: "Hero's Bow, later upgraded with the same Fire/Ice/Light Arrow trio for the endgame gauntlet." },
+      { gameId: "twilight-princess", note: "Hero's Bow, with a Hawkeye zoom upgrade granted by donning the Zora Armor." },
+      { gameId: "skyward-sword", note: "Motion-controlled draw-and-release aiming doubles as one of the game's core Wii MotionPlus tutorials." },
+      { gameId: "breath-of-the-wild", note: "No longer a single named item: dozens of bow types drop as breakable loot, mixed and matched with elemental arrows bought or found." },
+      { gameId: "tears-of-the-kingdom", note: "Same loot-bow economy, plus Fuse — glue a mushroom, a gem, or a monster part to any arrow for a custom effect." },
+    ],
+  },
+  {
+    id: "bombs",
+    title: "Bombs",
+    kind: "item",
+    blurb:
+      "Cracked walls, secret shops, and one very famous fuse timer — bombs have been the series' answer to 'that wall looks suspicious' since the beginning.",
+    entries: [
+      { gameId: "the-legend-of-zelda", note: "Sold by the original 'It's a secret to everybody' shopkeeper; blast cracked cave walls to find hidden rooms." },
+      { gameId: "a-link-to-the-past", note: "Bomb shops and a growable Bomb Bag turn wall-cracking into a running side habit." },
+      { gameId: "ocarina-of-time", note: "The Bomb Bag is Dodongo's Cavern's reward; remote-detonated Bombchus arrive as a bettable minigame prize." },
+      { gameId: "majoras-mask", note: "Bombchus return, and the towering Powder Keg shows up for blockages ordinary bombs can't touch." },
+      { gameId: "twilight-princess", note: "A Goron-run bomb trade supplies the Bomb Bag, and Bomb Arrows fuse this thread with the bow thread into one shot." },
+      { gameId: "breath-of-the-wild", note: "Reimagined as a Sheikah Slate rune: unlimited round or square bombs, remote-detonated, no fuse timer at all." },
+      { gameId: "tears-of-the-kingdom", note: "The Bomb rune is gone entirely — Fuse a Bomb Flower to an arrow or weapon instead, a deliberate, much-discussed removal." },
+    ],
+  },
+
+  // ── Characters (cont.) ─────────────────────────────────────────────────
+  {
+    id: "impa",
+    title: "Impa",
+    kind: "character",
+    blurb:
+      "Nursemaid, sage, ancient guardian, elder — Impa has outlived nearly every timeline she's appeared in, in whatever body that era needs.",
+    entries: [
+      { gameId: "the-legend-of-zelda", note: "The old woman who tells Link, in the game's own opening story, how Zelda split the Triforce of Wisdom to keep it from Ganon." },
+      { gameId: "ocarina-of-time", note: "Zelda's Sheikah nursemaid and guardian, who teaches Link Zelda's Lullaby and later awakens as the Shadow Sage." },
+      { gameId: "skyward-sword", note: "A mysterious protector aging backward through Link's journey — revealed as a young Sheikah sent through time to guard Zelda." },
+      { gameId: "a-link-between-worlds", note: "Serves as Princess Zelda's trusted advisor inside Hyrule Castle." },
+      { gameId: "age-of-calamity", note: "A young, front-line combatant a century before Breath of the Wild — the same woman, a very different life stage." },
+      { gameId: "breath-of-the-wild", note: "The ancient elder of Kakariko Village, holding the clearest living memory of the Calamity a hundred years earlier." },
+      { gameId: "tears-of-the-kingdom", note: "Older and frailer still, but unmoved from her post as Kakariko's guide and Zelda's oldest ally." },
+    ],
+  },
+  {
+    id: "fairy-companions",
+    title: "Fairy Companions",
+    kind: "character",
+    blurb:
+      "Navi, Tatl, Fi, Ciela — the tiny voice in Link's ear, reinvented every generation from chirpy guide to blunt statistician.",
+    entries: [
+      { gameId: "ocarina-of-time", note: "Navi, sent by the Great Deku Tree to wake and guide Link — and the source of the single most-memed line in series history." },
+      { gameId: "majoras-mask", note: "Tatl, separated from twin brother Tael by the Skull Kid, is sharper-tongued and far less patient than Navi ever was." },
+      { gameId: "skyward-sword", note: "Fi, the spirit of the Goddess Sword itself, speaks entirely in probabilities and completion percentages rather than opinions." },
+      { gameId: "phantom-hourglass", note: "Ciela, found unconscious alongside Link at the story's start, sails with him and Captain Linebeck — and turns out to carry a secret tie to Tetra's fate." },
+    ],
+  },
+
+  // ── Places (cont.) ───────────────────────────────────────────────────
+  {
+    id: "gerudo-desert",
+    title: "The Gerudo Desert",
+    kind: "place",
+    blurb:
+      "The one region of Hyrule that's almost always someone else's — home turf of the Gerudo, Ganondorf's people, and a recurring test of whether Link is welcome there at all.",
+    entries: [
+      { gameId: "ocarina-of-time", note: "Gerudo Valley and Fortress gate the entrance to the Spirit Temple — and to Ganondorf's own people." },
+      { gameId: "twilight-princess", note: "Reframed as the Bulblin-overrun Arbiter's Grounds, its Gerudo population long since vanished into the region's own history." },
+      { gameId: "breath-of-the-wild", note: "Gerudo Town's men-forbidden entry famously requires Link to buy and wear the Gerudo Vai outfit just to walk inside." },
+      { gameId: "tears-of-the-kingdom", note: "Expanded further with the Lightning Temple and a mirrored layer in the Depths below the same sands." },
+    ],
+  },
+  {
+    id: "zoras-domain",
+    title: "Zora's Domain",
+    kind: "place",
+    blurb:
+      "The Zora's ancestral waterfall kingdom — flooded with light in some eras, frozen solid to open others, but always ruled from the same throne room.",
+    entries: [
+      { gameId: "ocarina-of-time", note: "Home to King Zora and Princess Ruto, and the gateway to Zora's Fountain and Lord Jabu-Jabu." },
+      { gameId: "majoras-mask", note: "Reimagined as Zora Hall in Great Bay, home to rock band the Indigo-Go's and the Mikau/egg-rescue subplot." },
+      { gameId: "twilight-princess", note: "Frozen completely solid by Zant's curse at the story's outset — one of the game's earliest, starkest images of loss." },
+      { gameId: "breath-of-the-wild", note: "Ruled by King Dorephan at the East Reservoir Lake, and the staging ground for the Vah Ruta Divine Beast questline." },
+      { gameId: "tears-of-the-kingdom", note: "Returns with new content tied to Prince Sidon's ascension to the throne." },
+    ],
+  },
 ];
 
 export function getThread(id: string): Thread | undefined {
