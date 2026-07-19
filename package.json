@@ -1,0 +1,37 @@
+{
+  "name": "zeldatime",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc --noEmit",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.144.0",
+    "@tanstack/react-start": "^1.145.4",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "srvx": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.7",
+    "@types/node": "^22.10.10",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^7.0.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}
