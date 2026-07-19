@@ -39,6 +39,47 @@
   --radius-sm: 8px;
 
   --shadow-panel: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+
+  /* Tech-slate energy layer */
+  --glow-cyan: 0 0 12px rgba(79, 209, 197, 0.45);
+  --glow-cyan-strong: 0 0 22px rgba(79, 209, 197, 0.7);
+  --glow-amber: 0 0 12px rgba(232, 178, 77, 0.45);
+  --glow-amber-strong: 0 0 22px rgba(232, 178, 77, 0.7);
+  --grad-holo: linear-gradient(100deg, var(--accent-amber) 0%, #f0d9a0 30%, var(--accent-cyan) 70%, #7de8de 100%);
+  --grad-panel-edge: linear-gradient(to bottom, rgba(232, 178, 77, 0.14), transparent 30%);
+  --grad-fade-slate: linear-gradient(to bottom, rgba(6, 10, 14, 0.55), rgba(6, 10, 14, 0.92) 60%, var(--slate-950) 100%);
+
+  /* Original abstract circuit-trace texture (not any game's glyphs) */
+  --tex-circuit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%234fd1c5' stroke-width='1' opacity='0.5'%3E%3Cpath d='M10 20h50v30h40'/%3E%3Cpath d='M150 60h-30v50h-60'/%3E%3Cpath d='M20 150v-40h35'/%3E%3Cpath d='M120 10v35h30'/%3E%3Ccircle cx='60' cy='20' r='3'/%3E%3Ccircle cx='100' cy='50' r='3'/%3E%3Ccircle cx='120' cy='110' r='3'/%3E%3Ccircle cx='55' cy='110' r='3'/%3E%3Ccircle cx='20' cy='110' r='2'/%3E%3Ccircle cx='150' cy='45' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  --tex-hexgrid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 0 56 16v34L28 66 0 50V16zM28 66 56 82v34L28 132 0 116V82z' fill='none' stroke='%23e8b24d' stroke-width='0.75' opacity='0.5'/%3E%3C/svg%3E");
+  --tex-scanlines: repeating-linear-gradient(
+    to bottom,
+    rgba(79, 209, 197, 0.06) 0px,
+    rgba(79, 209, 197, 0.06) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes scanline-drift {
+  from { background-position: 0 0; }
+  to { background-position: 0 40px; }
+}
+
+@keyframes circuit-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -60; }
+}
+
+@keyframes holo-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 * {
@@ -107,6 +148,8 @@ a:hover {
   opacity: 0.5;
   pointer-events: none;
   z-index: 40;
+  filter: drop-shadow(0 0 6px rgba(232, 178, 77, 0.5));
+  animation: pulse-glow 5s ease-in-out infinite;
 }
 
 .slate-frame__corner--tl {
@@ -144,6 +187,23 @@ a:hover {
 .slate-frame__body {
   flex: 1;
   padding: 32px 0 64px;
+  position: relative;
+}
+
+/* Faint ambient hex field behind everything inside the slate */
+.slate-frame__body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--tex-hexgrid);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slate-frame__body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ==========================================================================
@@ -157,6 +217,19 @@ a:hover {
   padding: 20px 40px;
   border-bottom: 1px solid var(--slate-700);
   background: linear-gradient(to bottom, var(--slate-850), transparent);
+  position: relative;
+}
+
+/* Holographic hairline under the nav */
+.nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--grad-holo);
+  opacity: 0.5;
 }
 
 .nav__brand {
@@ -176,10 +249,12 @@ a:hover {
 .nav__brand-mark {
   width: 14px;
   height: 14px;
-  background: var(--accent-amber);
+  background: var(--grad-holo);
+  background-size: 300% 300%;
+  animation: holo-shimmer 6s ease-in-out infinite;
   transform: rotate(45deg);
   border-radius: 3px;
-  box-shadow: 0 0 12px rgba(232, 178, 77, 0.6);
+  box-shadow: var(--glow-amber);
 }
 
 .nav__links {
@@ -221,6 +296,22 @@ a:hover {
   border: 1px solid var(--slate-700);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-panel);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grad-panel-edge), var(--tex-circuit);
+  background-size: 100% 100%, 160px 160px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.panel > * {
+  position: relative;
 }
 
 /* ==========================================================================
@@ -234,6 +325,13 @@ a:hover {
 .hero h1 {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   margin: 0 0 12px;
+  background: var(--grad-holo);
+  background-size: 250% 250%;
+  animation: holo-shimmer 9s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(232, 178, 77, 0.25));
 }
 
 .hero p {
@@ -312,6 +410,12 @@ a:hover {
   opacity: 0.75;
 }
 
+/* Energy flowing along solid branch paths */
+.timeline-branch-path--flow {
+  stroke-dasharray: 14 6;
+  animation: circuit-flow 2.6s linear infinite;
+}
+
 /* NOTE: never put a CSS `transform` on .timeline-node — the group is
    positioned by an SVG transform *attribute*, and the CSS property would
    override it, teleporting the node to the origin on hover (flicker loop). */
@@ -381,6 +485,20 @@ a:hover {
   border-color: var(--accent-amber-dim);
   transform: translateY(-2px);
   color: var(--slate-100);
+  box-shadow: var(--glow-amber), var(--shadow-panel);
+}
+
+.game-card__art {
+  position: relative;
+}
+
+.game-card:hover .game-card__art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--tex-scanlines);
+  animation: scanline-drift 1.2s linear infinite;
+  pointer-events: none;
 }
 
 .game-card__branch {
@@ -621,6 +739,20 @@ a:hover {
   margin-top: 2.2em;
   border-bottom: 1px solid var(--slate-700);
   padding-bottom: 8px;
+  position: relative;
+}
+
+.markdown-doc h2::before,
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  background: var(--accent-cyan);
+  transform: rotate(45deg);
+  box-shadow: var(--glow-cyan);
+  vertical-align: 2px;
 }
 
 .markdown-doc h3 {

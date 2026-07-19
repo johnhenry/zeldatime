@@ -22,6 +22,8 @@ export type Canonicity = "canon" | "semi-canon" | "non-canon";
 
 export type PlacementConfidence = "official" | "strong-community" | "speculative";
 
+import type { Connection } from "./content";
+
 export interface Game {
   id: string;
   title: string;
@@ -33,6 +35,10 @@ export interface Game {
   timelineOrder: number;
   /** Hotlinked box-art URL (property of Nintendo/its licensors, shown for identification). */
   image?: string;
+  /** Hotlinked landscape key art, consumed ONLY as a CSS background (Fandom hosts OK here, unlike SVG <image>). */
+  keyArt?: string;
+  /** Typed cross-links to other games. */
+  connections?: Connection[];
   /** Short year label for the diagram, e.g. "1998". */
   releaseYear: string;
   synopsis: string;

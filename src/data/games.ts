@@ -8,6 +8,9 @@ export const games: Game[] = [
     releaseDate: "2011 (Wii); HD remaster 2021 (Switch)",
     releaseYear: "2011",
     image: "https://upload.wikimedia.org/wikipedia/en/9/99/Legend_of_Zelda_Skyward_Sword_boxart.png",
+    connections: [
+      { type: "thematic", targetId: "ocarina-of-time", note: "Demise's dying curse is the mythological engine behind every later Ganon." },
+    ],
     platform: "Wii / Switch",
     era: "skyward-origin",
     branch: "pre-split",
@@ -27,6 +30,9 @@ export const games: Game[] = [
     releaseDate: "2004",
     releaseYear: "2004",
     image: "https://upload.wikimedia.org/wikipedia/en/0/0a/TLOZ-_Minish_Cap_NA_Box_art.png",
+    connections: [
+      { type: "direct-prequel", targetId: "four-swords", note: "The origin of Vaati and the Four Sword." },
+    ],
     platform: "Game Boy Advance",
     era: "era-of-creation",
     branch: "pre-split",
@@ -46,6 +52,10 @@ export const games: Game[] = [
     releaseDate: "2002",
     releaseYear: "2002",
     image: "https://upload.wikimedia.org/wikipedia/en/8/83/The_Legend_of_Zelda_A_Link_to_the_Past_%26_Four_Swords_Game_Cover.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "minish-cap" },
+      { type: "direct-prequel", targetId: "four-swords-adventures", note: "Vaati escapes again a branch later." },
+    ],
     platform: "Game Boy Advance",
     era: "era-of-creation",
     branch: "pre-split",
@@ -65,6 +75,9 @@ export const games: Game[] = [
     releaseDate: "1998",
     releaseYear: "1998",
     image: "https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg",
+    connections: [
+      { type: "thematic", targetId: "a-link-to-the-past", note: "Its Downfall-branch outcome becomes ALttP's Imprisoning War backstory." },
+    ],
     platform: "Nintendo 64",
     era: "hero-of-time",
     branch: "pre-split",
@@ -88,6 +101,9 @@ export const games: Game[] = [
     releaseDate: "2000",
     releaseYear: "2000",
     image: "https://upload.wikimedia.org/wikipedia/en/6/60/The_Legend_of_Zelda_-_Majora%27s_Mask_Box_Art.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "ocarina-of-time", note: "The same child Link, mere weeks later." },
+    ],
     platform: "Nintendo 64",
     era: "era-of-decline",
     branch: "child",
@@ -107,6 +123,9 @@ export const games: Game[] = [
     releaseDate: "2006",
     releaseYear: "2006",
     image: "https://upload.wikimedia.org/wikipedia/en/0/0e/The_Legend_of_Zelda_Twilight_Princess_Game_Cover.jpg",
+    connections: [
+      { type: "thematic", targetId: "majoras-mask", note: "The Hero's Shade is heavily implied to be the Hero of Time, passing on his skills." },
+    ],
     platform: "GameCube / Wii",
     era: "era-of-decline",
     branch: "child",
@@ -126,6 +145,9 @@ export const games: Game[] = [
     releaseDate: "2004",
     releaseYear: "2004",
     image: "https://upload.wikimedia.org/wikipedia/en/5/56/The_Legend_of_Zelda_Four_Swords_Adventures_Game_Cover.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "four-swords", note: "Vaati's sealing finally breaks." },
+    ],
     platform: "GameCube",
     era: "era-of-decline",
     branch: "child",
@@ -149,6 +171,10 @@ export const games: Game[] = [
     releaseDate: "2002",
     releaseYear: "2002",
     image: "https://upload.wikimedia.org/wikipedia/en/7/79/The_Legend_of_Zelda_The_Wind_Waker.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "ocarina-of-time", note: "Built directly on OoT's adult ending, centuries after the flood." },
+      { type: "direct-prequel", targetId: "phantom-hourglass" },
+    ],
     platform: "GameCube",
     era: "era-of-decline",
     branch: "adult",
@@ -168,6 +194,9 @@ export const games: Game[] = [
     releaseDate: "2007",
     releaseYear: "2007",
     image: "https://upload.wikimedia.org/wikipedia/en/5/5e/The_Legend_of_Zelda_Phantom_Hourglass_Game_Cover.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "wind-waker", note: "Begins the very next day." },
+    ],
     platform: "Nintendo DS",
     era: "era-of-decline",
     branch: "adult",
@@ -187,6 +216,9 @@ export const games: Game[] = [
     releaseDate: "2009",
     releaseYear: "2009",
     image: "https://upload.wikimedia.org/wikipedia/en/9/91/The_Legend_of_Zelda_Spirit_Tracks_box_art.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "phantom-hourglass", note: "A century later, in New Hyrule." },
+    ],
     platform: "Nintendo DS",
     era: "era-of-decline",
     branch: "adult",
@@ -208,6 +240,10 @@ export const games: Game[] = [
     releaseDate: "1991",
     releaseYear: "1991",
     image: "https://upload.wikimedia.org/wikipedia/en/2/21/The_Legend_of_Zelda_A_Link_to_the_Past_SNES_Game_Cover.jpg",
+    connections: [
+      { type: "direct-prequel", targetId: "links-awakening", note: "Its Link sails off in triumph — and shipwrecks." },
+      { type: "thematic", targetId: "a-link-between-worlds", note: "The same Hyrule, generations later." },
+    ],
     platform: "Super Nintendo",
     era: "era-of-decline",
     branch: "downfall",
@@ -229,6 +265,9 @@ export const games: Game[] = [
     releaseDate: "1993 (Game Boy); remake 2019 (Switch)",
     releaseYear: "1993",
     image: "https://upload.wikimedia.org/wikipedia/en/c/c1/Link%27s_Awakening.png",
+    connections: [
+      { type: "direct-sequel", targetId: "a-link-to-the-past", note: "The same hero, shipwrecked after his victory." },
+    ],
     platform: "Game Boy / Switch",
     era: "era-of-decline",
     branch: "downfall",
@@ -248,6 +287,9 @@ export const games: Game[] = [
     releaseDate: "2001",
     releaseYear: "2001",
     image: "https://upload.wikimedia.org/wikipedia/en/4/47/The_Legend_of_Zelda_Oracle_of_Seasons_and_Oracle_of_Ages_Game_Cover.png",
+    connections: [
+      { type: "parallel", targetId: "oracle-of-ages", note: "Linked adventures — passwords carry one story into the other." },
+    ],
     platform: "Game Boy Color",
     era: "era-of-decline",
     branch: "downfall",
@@ -267,6 +309,9 @@ export const games: Game[] = [
     releaseDate: "2001",
     releaseYear: "2001",
     image: "https://upload.wikimedia.org/wikipedia/en/4/47/The_Legend_of_Zelda_Oracle_of_Seasons_and_Oracle_of_Ages_Game_Cover.png",
+    connections: [
+      { type: "parallel", targetId: "oracle-of-seasons", note: "Finishing both unlocks the true Ganon ending." },
+    ],
     platform: "Game Boy Color",
     era: "era-of-decline",
     branch: "downfall",
@@ -286,6 +331,10 @@ export const games: Game[] = [
     releaseDate: "2013",
     releaseYear: "2013",
     image: "https://upload.wikimedia.org/wikipedia/en/1/1b/The_Legend_of_Zelda_A_Link_Between_Worlds_NA_cover.jpg",
+    connections: [
+      { type: "thematic", targetId: "a-link-to-the-past", note: "Reuses ALttP's overworld map, reimagined generations later." },
+      { type: "direct-prequel", targetId: "tri-force-heroes" },
+    ],
     platform: "Nintendo 3DS",
     era: "era-of-decline",
     branch: "downfall",
@@ -305,6 +354,9 @@ export const games: Game[] = [
     releaseDate: "2015",
     releaseYear: "2015",
     image: "https://upload.wikimedia.org/wikipedia/en/d/db/The_Legend_of_Zelda_Tri_Force_Heroes_Boxart.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "a-link-between-worlds", note: "The same Link, a few years on (per Aonuma)." },
+    ],
     platform: "Nintendo 3DS",
     era: "era-of-decline",
     branch: "downfall",
@@ -326,6 +378,9 @@ export const games: Game[] = [
     releaseDate: "1986",
     releaseYear: "1986",
     image: "https://upload.wikimedia.org/wikipedia/en/4/41/Legend_of_zelda_cover_%28with_cartridge%29_gold.png",
+    connections: [
+      { type: "direct-prequel", targetId: "adventure-of-link" },
+    ],
     platform: "NES / Famicom Disk System",
     era: "era-of-decline",
     branch: "downfall",
@@ -345,6 +400,9 @@ export const games: Game[] = [
     releaseDate: "1987",
     releaseYear: "1987",
     image: "https://upload.wikimedia.org/wikipedia/en/f/fd/Zelda_II_The_Adventure_of_Link_box.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "the-legend-of-zelda", note: "The same Link, years later." },
+    ],
     platform: "NES / Famicom Disk System",
     era: "era-of-decline",
     branch: "downfall",
@@ -366,6 +424,10 @@ export const games: Game[] = [
     releaseDate: "2017",
     releaseYear: "2017",
     image: "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
+    connections: [
+      { type: "direct-prequel", targetId: "tears-of-the-kingdom" },
+      { type: "parallel", targetId: "age-of-calamity", note: "AoC retells this game's backstory as a winnable what-if." },
+    ],
     platform: "Wii U / Switch",
     era: "era-of-prosperity",
     branch: "botw-era",
@@ -387,6 +449,10 @@ export const games: Game[] = [
     releaseDate: "2023",
     releaseYear: "2023",
     image: "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
+    connections: [
+      { type: "direct-sequel", targetId: "breath-of-the-wild" },
+      { type: "thematic", targetId: "age-of-imprisonment", note: "AoI dramatizes the ancient war this game excavates." },
+    ],
     platform: "Switch",
     era: "reawakening",
     branch: "botw-era",
@@ -410,6 +476,9 @@ export const games: Game[] = [
     releaseDate: "2020",
     releaseYear: "2020",
     image: "https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg",
+    connections: [
+      { type: "diverges-from", targetId: "breath-of-the-wild", note: "Splits from BOTW's remembered history at the Champions' last stand." },
+    ],
     platform: "Switch",
     era: "alternate-history",
     branch: "aoc-divergence",
@@ -433,6 +502,10 @@ export const games: Game[] = [
     releaseDate: "November 6, 2025",
     releaseYear: "2025",
     image: "https://upload.wikimedia.org/wikipedia/en/8/82/HyruleWarriors-AgeOfImprisonment-KeyArt.png",
+    connections: [
+      { type: "direct-prequel", targetId: "tears-of-the-kingdom", note: "Depicts the Imprisoning War TOTK only remembers." },
+      { type: "parallel", targetId: "age-of-calamity", note: "Sibling musou what-if history." },
+    ],
     platform: "Switch 2",
     era: "alternate-history",
     branch: "ancient-imprisonment",
@@ -457,6 +530,9 @@ export const games: Game[] = [
     releaseDate: "1993",
     releaseYear: "1993",
     image: "https://upload.wikimedia.org/wikipedia/en/d/d6/Link_facesofevil_packaging.jpg",
+    connections: [
+      { type: "parallel", targetId: "wand-of-gamelon", note: "Developed together, released the same day." },
+    ],
     platform: "Philips CD-i",
     era: "non-canon",
     branch: "non-canon",
@@ -478,6 +554,9 @@ export const games: Game[] = [
     releaseDate: "1993",
     releaseYear: "1993",
     image: "https://upload.wikimedia.org/wikipedia/en/c/c6/Zelda_wandofgamelon_packaging.jpg",
+    connections: [
+      { type: "parallel", targetId: "faces-of-evil" },
+    ],
     platform: "Philips CD-i",
     era: "non-canon",
     branch: "non-canon",
@@ -497,6 +576,9 @@ export const games: Game[] = [
     releaseDate: "1994",
     releaseYear: "1994",
     image: "https://upload.wikimedia.org/wikipedia/en/6/61/Zeldasadventure_packaging.jpg",
+    connections: [
+      { type: "thematic", targetId: "the-legend-of-zelda", note: "Structurally an overhead homage to the 1986 original." },
+    ],
     platform: "Philips CD-i",
     era: "non-canon",
     branch: "non-canon",
@@ -524,4 +606,15 @@ export function getRelatedGames(game: Game, limit = 4): Game[] {
 
 export function getGamesByBranch(branch: Game["branch"]): Game[] {
   return games.filter((g) => g.branch === branch);
+}
+
+export function getBranchNeighbors(game: Game): { prev?: Game; next?: Game } {
+  const siblings = games
+    .filter((g) => g.branch === game.branch)
+    .sort((a, b) => a.timelineOrder - b.timelineOrder);
+  const i = siblings.findIndex((g) => g.id === game.id);
+  return {
+    prev: i > 0 ? siblings[i - 1] : undefined,
+    next: i >= 0 && i < siblings.length - 1 ? siblings[i + 1] : undefined,
+  };
 }

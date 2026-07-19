@@ -193,7 +193,12 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
                 />
               )}
               {points.length > 1 && (
-                <path d={lineGen(points) ?? undefined} className="timeline-branch-path" stroke={branch.color} />
+                <path
+                  d={lineGen(points) ?? undefined}
+                  className="timeline-branch-path timeline-branch-path--flow"
+                  stroke={branch.color}
+                  filter="url(#fx-glow-soft)"
+                />
               )}
             </g>
           );
@@ -236,6 +241,7 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
                       strokeWidth={isHovered ? 5 : 2.5}
                       strokeDasharray={p.game.canonicity === "non-canon" ? "4 3" : undefined}
                       opacity={p.game.placementConfidence === "speculative" && !isHovered ? 0.8 : 1}
+                      filter={isHovered ? "url(#fx-glow-cyan)" : "url(#fx-glow-soft)"}
                     />
                     <image
                       href={p.game.image}
