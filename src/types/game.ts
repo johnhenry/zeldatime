@@ -5,6 +5,7 @@ export type Era =
   | "era-of-decline"
   | "era-of-prosperity"
   | "reawakening"
+  | "alternate-history"
   | "non-canon";
 
 export type Branch =
@@ -12,9 +13,9 @@ export type Branch =
   | "child"
   | "adult"
   | "downfall"
-  | "converged"
   | "botw-era"
   | "aoc-divergence"
+  | "ancient-imprisonment"
   | "non-canon";
 
 export type Canonicity = "canon" | "semi-canon" | "non-canon";

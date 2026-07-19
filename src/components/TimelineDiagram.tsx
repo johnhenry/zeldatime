@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { scaleLinear } from "d3-scale";
 import { line as d3line, curveMonotoneX, curveBasis } from "d3-shape";
 import type { Game } from "~/types/game";
 import { branches, getBranch } from "~/data/timeline";
@@ -10,16 +9,19 @@ const LANE_ORDER = [
   "child",
   "adult",
   "downfall",
-  "converged",
   "botw-era",
   "aoc-divergence",
+  "ancient-imprisonment",
   "non-canon",
 ] as const;
 
 const LANE_HEIGHT = 92;
 const TOP_PADDING = 40;
 const SIDE_PADDING = 90;
+const NODE_SPACING = 150;
 const NODE_RADIUS = 7;
+
+const FLOATING_AFTER_PLACED = new Set(["botw-era", "aoc-divergence", "ancient-imprisonment"]);
 
 interface Point {
   x: number;
@@ -37,32 +39,55 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
     return map;
   }, []);
 
-  const width = 1400;
-  const height = TOP_PADDING * 2 + LANE_ORDER.length * LANE_HEIGHT;
-
-  const orders = games.map((g) => g.timelineOrder);
-  const xScale = useMemo(
-    () =>
-      scaleLinear()
-        .domain([Math.min(0, ...orders), Math.max(1, ...orders)])
-        .range([SIDE_PADDING, width - SIDE_PADDING]),
-    [orders]
-  );
-
+  // Lay branches out in dependency order: a branch with a parent starts right
+  // where its parent's last node lands, so forks read as a short local step
+  // rather than a scale-driven diagonal. The officially-unplaced titles
+  // (BOTW-era, Age of Calamity, Age of Imprisonment) have no parent to fork
+  // from, so they start together in their own column after the placed
+  // branches end — grouped as "modern, unresolved" rather than piled at the
+  // diagram's origin alongside the pre-split trunk and non-canon games.
   const pointsByBranch = useMemo(() => {
     const map = new Map<string, Point[]>();
+    const branchEndX = new Map<string, number>();
+    let placedMaxX = SIDE_PADDING;
+
     for (const branch of branches) {
       const branchGames = games
         .filter((g) => g.branch === branch.id)
         .sort((a, b) => a.timelineOrder - b.timelineOrder);
       const y = laneY.get(branch.id) ?? TOP_PADDING;
-      map.set(
-        branch.id,
-        branchGames.map((g) => ({ x: xScale(g.timelineOrder), y, game: g }))
-      );
+
+      let startX: number;
+      if (branch.parent && branchEndX.has(branch.parent)) {
+        startX = (branchEndX.get(branch.parent) ?? SIDE_PADDING) + NODE_SPACING;
+      } else if (FLOATING_AFTER_PLACED.has(branch.id)) {
+        startX = placedMaxX + NODE_SPACING;
+      } else {
+        startX = SIDE_PADDING;
+      }
+
+      const points = branchGames.map((g, i) => ({ x: startX + i * NODE_SPACING, y, game: g }));
+      map.set(branch.id, points);
+
+      if (points.length > 0) {
+        const endX = points[points.length - 1].x;
+        branchEndX.set(branch.id, endX);
+        if (branch.parent === "pre-split") placedMaxX = Math.max(placedMaxX, endX);
+      }
     }
+
     return map;
-  }, [games, laneY, xScale]);
+  }, [games, laneY]);
+
+  const width = useMemo(() => {
+    let maxX = SIDE_PADDING;
+    for (const points of pointsByBranch.values()) {
+      for (const p of points) maxX = Math.max(maxX, p.x);
+    }
+    return maxX + SIDE_PADDING;
+  }, [pointsByBranch]);
+
+  const height = TOP_PADDING * 2 + LANE_ORDER.length * LANE_HEIGHT;
 
   const lineGen = d3line<Point>()
     .x((d) => d.x)
@@ -105,13 +130,14 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
                   d={
                     forkGen([
                       { x: forkOrigin.x, y: forkOrigin.y },
+                      { x: (forkOrigin.x + points[0].x) / 2, y: (forkOrigin.y + points[0].y) / 2 },
                       { x: points[0].x, y: points[0].y },
                     ]) ?? undefined
                   }
                   className="timeline-branch-path"
                   stroke={branch.color}
                   strokeDasharray="4 4"
-                  opacity={0.4}
+                  opacity={0.45}
                 />
               )}
               {points.length > 1 && (
