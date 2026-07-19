@@ -20,10 +20,11 @@ function AboutPage() {
           menu and map design.
         </p>
         <p>
-          Every visual element here — the frame chrome, iconography, color palettes, and
-          typography — is an original design inspired by patterns observed while researching
-          Zelda's UI language. No screenshots, logos, or assets from any Nintendo product are used
-          anywhere on this site or in its source code.
+          The site's interface — the frame chrome, iconography, color palettes, and typography —
+          is an original design inspired by patterns observed while researching Zelda's UI
+          language. Game box art shown throughout is the property of Nintendo and its licensors,
+          hotlinked from public reference sources and displayed for identification and commentary;
+          no game assets are stored in this project's source code.
         </p>
         <p>
           This project is not affiliated with, endorsed by, or sponsored by Nintendo. The Legend

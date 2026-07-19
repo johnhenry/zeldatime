@@ -18,10 +18,11 @@ Backed by two long-form research papers, also readable in-app under **Codex**:
 
 ## Originality & non-affiliation
 
-Every visual element on this site — the frame chrome, iconography, typography, and color
-palettes — is an original design inspired by patterns identified in `docs/ui-research.md`. No
-screenshots, logos, fonts, or other assets from any Nintendo product are used anywhere in this
-project. This is not affiliated with, endorsed by, or sponsored by Nintendo. The Legend of Zelda
+The site's interface — frame chrome, iconography, typography, and color palettes — is an
+original design inspired by patterns identified in `docs/ui-research.md`. Game box art is the
+property of Nintendo and its licensors; it is hotlinked from public reference sources (Wikipedia
+et al.) for identification and commentary, and no game assets are stored in this repository.
+This project is not affiliated with, endorsed by, or sponsored by Nintendo. The Legend of Zelda
 and all related properties are trademarks of Nintendo.
 
 ## Development

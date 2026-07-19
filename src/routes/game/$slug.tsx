@@ -41,18 +41,25 @@ function GameDetailPage() {
     <SlateFrame>
       <article className="detail-page">
         <div className="detail-hero" style={{ borderColor: branch?.color }}>
-          <p className="detail-hero__branch" style={{ color: branch?.color }}>
-            {branch?.label}
-          </p>
-          <h1>{game.title}</h1>
-          <p className="detail-hero__meta">
-            {game.releaseDate} &middot; {game.platform}
-          </p>
-          <div className="detail-hero__badges">
-            <span className={`canonicity-badge canonicity-badge--${game.canonicity}`}>
-              {game.canonicity.replace("-", " ")}
-            </span>
-            <ConfidenceBadge confidence={game.placementConfidence} />
+          {game.image && (
+            <div className="detail-hero__art" style={{ borderColor: branch?.color }}>
+              <img src={game.image} alt={`${game.title} box art`} />
+            </div>
+          )}
+          <div className="detail-hero__info">
+            <p className="detail-hero__branch" style={{ color: branch?.color }}>
+              {branch?.label}
+            </p>
+            <h1>{game.title}</h1>
+            <p className="detail-hero__meta">
+              {game.releaseDate} &middot; {game.platform}
+            </p>
+            <div className="detail-hero__badges">
+              <span className={`canonicity-badge canonicity-badge--${game.canonicity}`}>
+                {game.canonicity.replace("-", " ")}
+              </span>
+              <ConfidenceBadge confidence={game.placementConfidence} />
+            </div>
           </div>
         </div>
 

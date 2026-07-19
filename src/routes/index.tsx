@@ -77,7 +77,10 @@ function HomePage() {
           }}
           resultCount={filteredGames.length}
         />
+      </div>
 
+      {/* Full-bleed: the diagram deserves the whole viewport, not the 1100px column. */}
+      <div className="timeline-bleed">
         <TimelineDiagram games={filteredGames} />
       </div>
     </SlateFrame>

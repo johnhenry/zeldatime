@@ -15,13 +15,26 @@ const LANE_ORDER = [
   "non-canon",
 ] as const;
 
-const LANE_HEIGHT = 92;
-const TOP_PADDING = 40;
-const SIDE_PADDING = 90;
-const NODE_SPACING = 150;
-const NODE_RADIUS = 7;
+const LANE_HEIGHT = 132;
+// Must clear a label + year drawn above a top-lane node: ring(30) + label(20) + year(15) + ascender.
+const TOP_PADDING = 96;
+// Left gutter holds the lane's branch label so branch identity doesn't rely on the legend alone.
+const GUTTER = 250;
+const RIGHT_PADDING = 110;
+const NODE_SPACING = 178;
+const ART_RADIUS = 26;
 
-const FLOATING_AFTER_PLACED = new Set(["botw-era", "aoc-divergence", "ancient-imprisonment"]);
+// Compact lane labels for the gutter — full labels live in the legend and branch data.
+const LANE_LABELS: Record<string, string> = {
+  "pre-split": "SHARED TRUNK",
+  child: "CHILD TIMELINE",
+  adult: "ADULT TIMELINE",
+  downfall: "DOWNFALL TIMELINE",
+  "botw-era": "DISTANT FUTURE",
+  "aoc-divergence": "ALTERNATE HISTORY",
+  "ancient-imprisonment": "IMPRISONING WAR",
+  "non-canon": "NON-CANON (CD-i)",
+};
 
 interface Point {
   x: number;
@@ -33,23 +46,28 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState<string | null>(null);
 
+  // Only branches that actually have games (after filtering) get a lane, so
+  // filtered views compact vertically instead of leaving dead bands.
+  const activeLanes = useMemo(() => {
+    const withGames = new Set(games.map((g) => g.branch));
+    return LANE_ORDER.filter((id) => withGames.has(id));
+  }, [games]);
+
   const laneY = useMemo(() => {
     const map = new Map<string, number>();
-    LANE_ORDER.forEach((id, i) => map.set(id, TOP_PADDING + i * LANE_HEIGHT));
+    activeLanes.forEach((id, i) => map.set(id, TOP_PADDING + i * LANE_HEIGHT));
     return map;
-  }, []);
+  }, [activeLanes]);
 
   // Lay branches out in dependency order: a branch with a parent starts right
   // where its parent's last node lands, so forks read as a short local step
-  // rather than a scale-driven diagonal. The officially-unplaced titles
-  // (BOTW-era, Age of Calamity, Age of Imprisonment) have no parent to fork
-  // from, so they start together in their own column after the placed
-  // branches end — grouped as "modern, unresolved" rather than piled at the
-  // diagram's origin alongside the pre-split trunk and non-canon games.
+  // rather than a scale-driven diagonal. Branches with no parent — the trunk,
+  // the officially-unplaced modern titles, and non-canon — all start at the
+  // gutter edge; their lane label carries the "unconnected" semantics, and
+  // keeping them left means the first screenful shows every branch.
   const pointsByBranch = useMemo(() => {
     const map = new Map<string, Point[]>();
     const branchEndX = new Map<string, number>();
-    let placedMaxX = SIDE_PADDING;
 
     for (const branch of branches) {
       const branchGames = games
@@ -57,22 +75,16 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
         .sort((a, b) => a.timelineOrder - b.timelineOrder);
       const y = laneY.get(branch.id) ?? TOP_PADDING;
 
-      let startX: number;
-      if (branch.parent && branchEndX.has(branch.parent)) {
-        startX = (branchEndX.get(branch.parent) ?? SIDE_PADDING) + NODE_SPACING;
-      } else if (FLOATING_AFTER_PLACED.has(branch.id)) {
-        startX = placedMaxX + NODE_SPACING;
-      } else {
-        startX = SIDE_PADDING;
-      }
+      const startX =
+        branch.parent && branchEndX.has(branch.parent)
+          ? (branchEndX.get(branch.parent) ?? GUTTER) + NODE_SPACING
+          : GUTTER;
 
       const points = branchGames.map((g, i) => ({ x: startX + i * NODE_SPACING, y, game: g }));
       map.set(branch.id, points);
 
       if (points.length > 0) {
-        const endX = points[points.length - 1].x;
-        branchEndX.set(branch.id, endX);
-        if (branch.parent === "pre-split") placedMaxX = Math.max(placedMaxX, endX);
+        branchEndX.set(branch.id, points[points.length - 1].x);
       }
     }
 
@@ -80,14 +92,14 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
   }, [games, laneY]);
 
   const width = useMemo(() => {
-    let maxX = SIDE_PADDING;
+    let maxX = GUTTER;
     for (const points of pointsByBranch.values()) {
       for (const p of points) maxX = Math.max(maxX, p.x);
     }
-    return maxX + SIDE_PADDING;
+    return maxX + RIGHT_PADDING;
   }, [pointsByBranch]);
 
-  const height = TOP_PADDING * 2 + LANE_ORDER.length * LANE_HEIGHT;
+  const height = TOP_PADDING + activeLanes.length * LANE_HEIGHT;
 
   const lineGen = d3line<Point>()
     .x((d) => d.x)
@@ -109,13 +121,53 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
 
   return (
     <div className="timeline-diagram-wrap">
+      {/* Rendered at native pixel size inside a horizontally scrollable wrap:
+          scaling the whole SVG down to container width made every label
+          unreadably small. */}
       <svg
         className="timeline-diagram"
         viewBox={`0 0 ${width} ${height}`}
-        width="100%"
+        width={width}
+        height={height}
         role="img"
         aria-label="Interactive Legend of Zelda timeline, branching by era"
       >
+        <defs>
+          <clipPath id="art-clip">
+            <circle r={ART_RADIUS} cx={0} cy={0} />
+          </clipPath>
+        </defs>
+
+        {/* Lane gutter: label + faint guide rule per active branch. */}
+        {branches.map((branch) => {
+          const y = laneY.get(branch.id);
+          if (y === undefined || !(pointsByBranch.get(branch.id) ?? []).length) return null;
+          return (
+            <g key={`lane-${branch.id}`}>
+              <line
+                x1={18}
+                x2={width - 40}
+                y1={y}
+                y2={y}
+                stroke={branch.color}
+                strokeWidth={1}
+                opacity={0.1}
+              />
+              <text
+                x={18}
+                y={y - 10}
+                fontSize={11.5}
+                fontWeight={600}
+                letterSpacing={1.2}
+                fill={branch.color}
+                opacity={0.9}
+              >
+                {LANE_LABELS[branch.id] ?? branch.label.toUpperCase()}
+              </text>
+            </g>
+          );
+        })}
+
         {branches.map((branch) => {
           const points = pointsByBranch.get(branch.id) ?? [];
           if (points.length === 0) return null;
@@ -136,43 +188,98 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
                   }
                   className="timeline-branch-path"
                   stroke={branch.color}
-                  strokeDasharray="4 4"
+                  strokeDasharray="5 5"
                   opacity={0.45}
                 />
               )}
               {points.length > 1 && (
                 <path d={lineGen(points) ?? undefined} className="timeline-branch-path" stroke={branch.color} />
               )}
-              {points.map((p) => (
-                <g
-                  key={p.game.id}
-                  className="timeline-node"
-                  transform={`translate(${p.x}, ${p.y})`}
-                  onClick={() => navigate({ to: "/game/$slug", params: { slug: p.game.id } })}
-                  onMouseEnter={() => setHovered(p.game.id)}
-                  onMouseLeave={() => setHovered((h) => (h === p.game.id ? null : h))}
-                >
-                  <circle
-                    r={NODE_RADIUS}
-                    fill={branch.color}
-                    stroke={p.game.canonicity === "canon" ? "none" : "var(--slate-950)"}
-                    strokeWidth={p.game.canonicity === "canon" ? 0 : 2}
-                    strokeDasharray={p.game.canonicity === "non-canon" ? "2 2" : undefined}
-                    opacity={p.game.placementConfidence === "speculative" ? 0.6 : 1}
-                  />
-                  <text
-                    x={0}
-                    y={-14}
-                    textAnchor="middle"
-                    fontSize={hovered === p.game.id ? 13 : 11}
-                    fontWeight={hovered === p.game.id ? 700 : 400}
-                  >
-                    {p.game.title}
-                  </text>
-                </g>
-              ))}
             </g>
           );
+        })}
+
+        {/* Nodes render after all paths so hovered art never sits under a line. */}
+        {branches.map((branch) => {
+          const points = pointsByBranch.get(branch.id) ?? [];
+          return points.map((p, i) => {
+            const isHovered = hovered === p.game.id;
+            // Alternate labels above/below so long adjacent titles never collide.
+            const labelAbove = i % 2 === 0;
+            const labelY = labelAbove ? -(ART_RADIUS + 20) : ART_RADIUS + 26;
+
+            return (
+              <g
+                key={p.game.id}
+                className="timeline-node"
+                transform={`translate(${p.x}, ${p.y})`}
+                onClick={() => navigate({ to: "/game/$slug", params: { slug: p.game.id } })}
+                onMouseEnter={() => setHovered(p.game.id)}
+                onMouseLeave={() => setHovered((h) => (h === p.game.id ? null : h))}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") navigate({ to: "/game/$slug", params: { slug: p.game.id } });
+                }}
+                role="link"
+                aria-label={`${p.game.title} (${p.game.releaseYear})`}
+              >
+                {/* Invisible hit area keeps hover stable while the visible ring animates. */}
+                <circle r={ART_RADIUS + 10} fill="transparent" />
+
+                {p.game.image ? (
+                  <>
+                    <circle
+                      className="timeline-node__ring"
+                      r={ART_RADIUS + 4}
+                      fill="var(--slate-950)"
+                      stroke={branch.color}
+                      strokeWidth={isHovered ? 5 : 2.5}
+                      strokeDasharray={p.game.canonicity === "non-canon" ? "4 3" : undefined}
+                      opacity={p.game.placementConfidence === "speculative" && !isHovered ? 0.8 : 1}
+                    />
+                    <image
+                      href={p.game.image}
+                      x={-ART_RADIUS}
+                      y={-ART_RADIUS}
+                      width={ART_RADIUS * 2}
+                      height={ART_RADIUS * 2}
+                      clipPath="url(#art-clip)"
+                      preserveAspectRatio="xMidYMid slice"
+                      style={{ pointerEvents: "none" }}
+                    />
+                  </>
+                ) : (
+                  <circle
+                    className="timeline-node__dot"
+                    r={isHovered ? 12 : 9}
+                    fill={branch.color}
+                    strokeDasharray={p.game.canonicity === "non-canon" ? "3 2" : undefined}
+                    opacity={p.game.placementConfidence === "speculative" && !isHovered ? 0.7 : 1}
+                  />
+                )}
+
+                <text
+                  x={0}
+                  y={labelY}
+                  textAnchor="middle"
+                  fontSize={13}
+                  fontWeight={isHovered ? 700 : 500}
+                  fill={isHovered ? "var(--slate-100)" : "var(--slate-200)"}
+                >
+                  {p.game.title}
+                </text>
+                <text
+                  className="timeline-node__year"
+                  x={0}
+                  y={labelY + (labelAbove ? -15 : 15)}
+                  textAnchor="middle"
+                  fontSize={10.5}
+                >
+                  {p.game.releaseYear}
+                </text>
+              </g>
+            );
+          });
         })}
       </svg>
     </div>

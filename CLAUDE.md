@@ -5,11 +5,11 @@ See `ARCHITECTURE.md` for how the app fits together and `PLAN.md` for why it was
 
 ## Hard rules
 
-- **No copied Nintendo assets, ever.** No screenshots, ripped sprites, logos, or fonts from any
-  Zelda/Nintendo product — in the app, in `public/`, or in commit history. All visuals are
-  original, inspired-by interpretations derived from `docs/ui-research.md`. If you're about to
-  add an image, ask: did I make this, or did it come from a game/wiki/fan-art source? Only the
-  former is allowed.
+- **No Nintendo assets stored in the repo.** Game box art is allowed but only as HOTLINKED URLs
+  (Wikipedia/upload.wikimedia.org preferred) kept in `src/data/games.ts` — never downloaded into
+  `public/` or committed to history. The interface itself (chrome, icons, fonts, palettes) stays
+  100% original, derived from `docs/ui-research.md`. Every page that shows box art must keep the
+  identification-and-commentary attribution in the footer/about disclaimers intact.
 - **Data is truth, components are projections.** Game/timeline facts belong in `src/data/*.ts`,
   never hardcoded in a component.
 - **The Codex mirrors the docs, always.** `docs/lore-research.md` and `docs/ui-research.md` are

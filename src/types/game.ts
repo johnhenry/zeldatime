@@ -31,6 +31,10 @@ export interface Game {
   branch: Branch;
   /** In-universe chronological position within its branch, for timeline layout (not release order). */
   timelineOrder: number;
+  /** Hotlinked box-art URL (property of Nintendo/its licensors, shown for identification). */
+  image?: string;
+  /** Short year label for the diagram, e.g. "1998". */
+  releaseYear: string;
   synopsis: string;
   trivia: string[];
   canonicity: Canonicity;

@@ -290,10 +290,16 @@ a:hover {
    Timeline diagram
    ========================================================================== */
 
+.timeline-bleed {
+  padding: 0 32px;
+}
+
 .timeline-diagram-wrap {
   position: relative;
   margin: 24px 0 48px;
   overflow-x: auto;
+  /* Soft edge fade hints that the chart scrolls horizontally. */
+  mask-image: linear-gradient(to right, transparent, black 18px, black calc(100% - 18px), transparent);
 }
 
 .timeline-diagram-wrap svg {
@@ -306,19 +312,26 @@ a:hover {
   opacity: 0.75;
 }
 
+/* NOTE: never put a CSS `transform` on .timeline-node — the group is
+   positioned by an SVG transform *attribute*, and the CSS property would
+   override it, teleporting the node to the origin on hover (flicker loop). */
 .timeline-node {
   cursor: pointer;
-  transition: transform 0.15s ease;
 }
 
-.timeline-node:hover {
-  transform: scale(1.15);
+.timeline-node .timeline-node__ring,
+.timeline-node .timeline-node__dot {
+  transition: r 0.15s ease, stroke-width 0.15s ease, opacity 0.15s ease;
 }
 
 .timeline-node text,
 .timeline-diagram text {
   font-family: var(--font-body);
   fill: var(--slate-200);
+}
+
+.timeline-node__year {
+  fill: var(--slate-400);
 }
 
 .era-legend {
@@ -373,6 +386,20 @@ a:hover {
 .game-card__branch {
   width: 5px;
   flex-shrink: 0;
+}
+
+.game-card__art {
+  width: 86px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--slate-800);
+}
+
+.game-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .game-card__body {
@@ -453,6 +480,37 @@ a:hover {
   border-left: 3px solid var(--accent-amber);
   padding: 8px 0 24px 20px;
   margin-bottom: 24px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.detail-hero__art {
+  flex-shrink: 0;
+  width: 180px;
+  border: 1px solid var(--slate-700);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-panel);
+}
+
+.detail-hero__art img {
+  width: 100%;
+  display: block;
+}
+
+.detail-hero__info {
+  min-width: 0;
+}
+
+@media (max-width: 560px) {
+  .detail-hero {
+    flex-direction: column;
+  }
+
+  .detail-hero__art {
+    width: 140px;
+  }
 }
 
 .detail-hero__branch {
