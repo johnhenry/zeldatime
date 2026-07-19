@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CodexIndexRouteImport } from './routes/codex/index'
+import { Route as CodexLoreRouteImport } from './routes/codex/lore'
+import { Route as CodexUiRouteImport } from './routes/codex/ui'
+import { Route as GameSlugRouteImport } from './routes/game/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodexIndexRoute = CodexIndexRouteImport.update({
+  id: '/codex/',
+  path: '/codex/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodexLoreRoute = CodexLoreRouteImport.update({
+  id: '/codex/lore',
+  path: '/codex/lore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodexUiRoute = CodexUiRouteImport.update({
+  id: '/codex/ui',
+  path: '/codex/ui',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameSlugRoute = GameSlugRouteImport.update({
+  id: '/game/$slug',
+  path: '/game/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/codex/lore': typeof CodexLoreRoute
+  '/codex/ui': typeof CodexUiRoute
+  '/game/$slug': typeof GameSlugRoute
+  '/codex/': typeof CodexIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/codex/lore': typeof CodexLoreRoute
+  '/codex/ui': typeof CodexUiRoute
+  '/game/$slug': typeof GameSlugRoute
+  '/codex': typeof CodexIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/codex/lore': typeof CodexLoreRoute
+  '/codex/ui': typeof CodexUiRoute
+  '/game/$slug': typeof GameSlugRoute
+  '/codex/': typeof CodexIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/about' | '/codex/lore' | '/codex/ui' | '/game/$slug' | '/codex/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/codex/lore' | '/codex/ui' | '/game/$slug' | '/codex'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/codex/lore'
+    | '/codex/ui'
+    | '/game/$slug'
+    | '/codex/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CodexLoreRoute: typeof CodexLoreRoute
+  CodexUiRoute: typeof CodexUiRoute
+  GameSlugRoute: typeof GameSlugRoute
+  CodexIndexRoute: typeof CodexIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/codex/': {
+      id: '/codex/'
+      path: '/codex'
+      fullPath: '/codex/'
+      preLoaderRoute: typeof CodexIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/codex/lore': {
+      id: '/codex/lore'
+      path: '/codex/lore'
+      fullPath: '/codex/lore'
+      preLoaderRoute: typeof CodexLoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/codex/ui': {
+      id: '/codex/ui'
+      path: '/codex/ui'
+      fullPath: '/codex/ui'
+      preLoaderRoute: typeof CodexUiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game/$slug': {
+      id: '/game/$slug'
+      path: '/game/$slug'
+      fullPath: '/game/$slug'
+      preLoaderRoute: typeof GameSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CodexLoreRoute: CodexLoreRoute,
+  CodexUiRoute: CodexUiRoute,
+  GameSlugRoute: GameSlugRoute,
+  CodexIndexRoute: CodexIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

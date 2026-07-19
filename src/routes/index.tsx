@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SlateFrame } from "~/components/SlateFrame";
 import { games } from "~/data/games";
 
 export const Route = createFileRoute("/")({
@@ -7,11 +8,11 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   return (
-    <div className="page">
+    <SlateFrame>
       <main className="container">
         <h1>Chronicle Slate</h1>
         <p>{games.length} games tracked.</p>
       </main>
-    </div>
+    </SlateFrame>
   );
 }
