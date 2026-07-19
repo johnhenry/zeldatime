@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { SoundToggle } from "~/components/SoundToggle";
 import { playConfirm } from "~/lib/sound";
 
+const ACTIVE_PROPS = { "aria-current": "page" as const };
+
 export function Nav() {
   return (
     <header className="nav">
@@ -10,16 +12,16 @@ export function Nav() {
         Chronicle Slate
       </Link>
       <nav className="nav__links">
-        <Link to="/" activeOptions={{ exact: true }} onClick={() => playConfirm()}>
+        <Link to="/" activeOptions={{ exact: true }} activeProps={ACTIVE_PROPS} onClick={() => playConfirm()}>
           Timeline
         </Link>
-        <Link to="/explore" onClick={() => playConfirm()}>
+        <Link to="/explore" activeProps={ACTIVE_PROPS} onClick={() => playConfirm()}>
           Explore
         </Link>
-        <Link to="/codex" onClick={() => playConfirm()}>
+        <Link to="/codex" activeProps={ACTIVE_PROPS} onClick={() => playConfirm()}>
           Codex
         </Link>
-        <Link to="/about" onClick={() => playConfirm()}>
+        <Link to="/about" activeProps={ACTIVE_PROPS} onClick={() => playConfirm()}>
           About
         </Link>
         <SoundToggle />

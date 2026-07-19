@@ -121,10 +121,18 @@ export function TimelineDiagram({ games }: { games: Game[] }) {
   }
 
   return (
-    <div className="timeline-diagram-wrap">
+    <div
+      className="timeline-diagram-wrap"
+      tabIndex={0}
+      role="region"
+      aria-label="Scrollable timeline chart — use arrow keys or drag to pan"
+    >
       {/* Rendered at native pixel size inside a horizontally scrollable wrap:
           scaling the whole SVG down to container width made every label
-          unreadably small. */}
+          unreadably small. tabIndex+role/aria-label make the scroll region
+          itself keyboard-operable (native browser arrow-key scroll on a
+          focused scroll container), independent of the node-to-node
+          traversal on the timeline-node elements inside it. */}
       <svg
         className="timeline-diagram"
         viewBox={`0 0 ${width} ${height}`}

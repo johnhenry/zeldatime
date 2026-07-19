@@ -122,6 +122,24 @@ a:hover {
   color: var(--accent-cyan);
 }
 
+/* ==========================================================================
+   Focus-visible — a single consistent ring for every interactive element,
+   keyboard-only (mouse clicks don't trigger :focus-visible). SVG elements
+   (.timeline-node) get their own outline rule near the diagram styles,
+   since `outline` behaves differently there but is still transform-free
+   and therefore safe under the no-CSS-transform rule.
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -423,6 +441,15 @@ a:hover {
   cursor: pointer;
 }
 
+/* `outline` (not `transform`) — paint-only, doesn't touch the SVG
+   transform attribute that positions this group, so it's safe under the
+   no-CSS-transform rule documented above. */
+.timeline-node:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
 .timeline-node .timeline-node__ring,
 .timeline-node .timeline-node__dot {
   transition: r 0.15s ease, stroke-width 0.15s ease, opacity 0.15s ease;
@@ -571,7 +598,10 @@ a:hover {
 }
 
 .confidence-badge--speculative {
-  color: var(--era-downfall);
+  /* --era-downfall itself fails WCAG AA for small text (~3.1:1 on card
+     backgrounds) -- it stays as-is for the diagram/branch color identity,
+     but this badge gets a lightened variant tuned to pass 4.5:1. */
+  color: #b56e6e;
 }
 
 .canonicity-badge {
@@ -581,7 +611,8 @@ a:hover {
 }
 
 .canonicity-badge--non-canon {
-  color: var(--era-noncanon);
+  /* Same reasoning as confidence-badge--speculative above. */
+  color: #79808c;
 }
 
 /* ==========================================================================
@@ -615,6 +646,10 @@ a:hover {
 .detail-hero__art img {
   width: 100%;
   display: block;
+  /* Reserve box-art's ~0.68 portrait ratio so the hero doesn't jump once
+     the (always hotlinked, never locally sized) image finishes loading. */
+  aspect-ratio: 0.68;
+  object-fit: cover;
 }
 
 .detail-hero__info {
@@ -1892,11 +1927,17 @@ body::before {
 .markdown-doc img {
   display: block;
   max-width: 100%;
+  width: 100%;
   height: auto;
   margin: 28px auto;
   border-radius: var(--radius-md);
   border: 1px solid var(--slate-700);
   box-shadow: var(--shadow-panel);
+  /* Most standalone essay images are portrait box art (~0.68); the few
+     landscape key-art images crop slightly rather than reflowing the page
+     as they load -- a deliberate CLS-vs-perfect-fit tradeoff. */
+  aspect-ratio: 0.68;
+  object-fit: cover;
 }
 
 .markdown-doc p:has(> img:only-child) {
@@ -1934,6 +1975,8 @@ body::before {
 .markdown-doc table:has(img) img {
   margin: 0 auto 10px;
   width: 100%;
+  aspect-ratio: 0.68;
+  object-fit: cover;
 }
 
 .markdown-doc table:has(img) em {
@@ -1944,4 +1987,80 @@ body::before {
 
 .markdown-doc em:has(> img) {
   display: block;
+}
+
+/* ==========================================================================
+   Print — scoped to the Codex essays. Everything else keeps screen styles
+   (printing the interactive timeline/app chrome makes no sense).
+   ========================================================================== */
+
+@media print {
+  .nav,
+  .footer,
+  .scroll-walker,
+  .slate-frame__corner,
+  .slate-frame__body::before,
+  .icon-key {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .codex-reader {
+    max-width: 100%;
+  }
+
+  .markdown-doc h1,
+  .markdown-doc h2,
+  .markdown-doc h3,
+  .markdown-doc p,
+  .markdown-doc li {
+    color: #111 !important;
+  }
+
+  .markdown-doc h2::before {
+    background: #333 !important;
+    box-shadow: none !important;
+  }
+
+  .markdown-doc a {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+
+  /* Show the actual URL after each link, since clicking isn't possible on paper. */
+  .markdown-doc a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555 !important;
+  }
+
+  .markdown-doc img,
+  .markdown-doc table:has(img) img {
+    filter: grayscale(0.1);
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .markdown-doc blockquote {
+    border-left: 2px solid #999;
+    color: #333 !important;
+  }
+
+  .markdown-doc table:not(:has(img)) {
+    border: 1px solid #999;
+  }
+
+  .markdown-doc th,
+  .markdown-doc td {
+    border: 1px solid #999 !important;
+    color: #111 !important;
+  }
+
+  a {
+    color: #111 !important;
+  }
 }
