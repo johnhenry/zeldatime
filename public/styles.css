@@ -1,10 +1,650 @@
+/* ==========================================================================
+   Chronicle Slate — original design system
+   Inspired by, never copied from, Zelda's Switch-era menu/map language.
+   ========================================================================== */
+
 :root {
   color-scheme: dark;
+
+  /* Base palette — deep slate, luminous amber accent */
+  --slate-950: #060a0e;
+  --slate-900: #0b0f14;
+  --slate-850: #101720;
+  --slate-800: #16202b;
+  --slate-700: #223040;
+  --slate-600: #34495e;
+  --slate-400: #7b8fa3;
+  --slate-200: #c7d3dd;
+  --slate-100: #e8ecef;
+
+  --accent-amber: #e8b24d;
+  --accent-amber-dim: #a97f31;
+  --accent-cyan: #4fd1c5;
+
+  /* Era palette — bespoke, not sampled from any game asset */
+  --era-pre-split: #d9a441;
+  --era-child: #4caf7d;
+  --era-adult: #3f8ec9;
+  --era-downfall: #a34a4a;
+  --era-converged: #8a6fb0;
+  --era-botw: #3fc9c9;
+  --era-aoc: #c9a13f;
+  --era-noncanon: #6b7280;
+
+  --font-display: "Cinzel", "Spectral", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  --shadow-panel: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  font-family: var(--font-body);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232, 178, 77, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(79, 209, 197, 0.06), transparent),
+    var(--slate-950);
+  color: var(--slate-100);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: var(--slate-100);
+}
+
+a {
+  color: var(--accent-amber);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-cyan);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Chronicle Slate frame — an original HUD-frame motif evoking a
+   diegetic "device" reading surface. Hand-drawn corners, no ripped glyphs.
+   ========================================================================== */
+
+.slate-frame {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.slate-frame__corner {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--accent-amber-dim);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.slate-frame__corner--tl {
+  top: 14px;
+  left: 14px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+}
+
+.slate-frame__corner--tr {
+  top: 14px;
+  right: 14px;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: 6px;
+}
+
+.slate-frame__corner--bl {
+  bottom: 14px;
+  left: 14px;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: 6px;
+}
+
+.slate-frame__corner--br {
+  bottom: 14px;
+  right: 14px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 6px;
+}
+
+.slate-frame__body {
+  flex: 1;
+  padding: 32px 0 64px;
+}
+
+/* ==========================================================================
+   Nav
+   ========================================================================== */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--slate-700);
+  background: linear-gradient(to bottom, var(--slate-850), transparent);
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--slate-100);
+}
+
+.nav__brand:hover {
+  color: var(--slate-100);
+}
+
+.nav__brand-mark {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-amber);
+  transform: rotate(45deg);
+  border-radius: 3px;
+  box-shadow: 0 0 12px rgba(232, 178, 77, 0.6);
+}
+
+.nav__links {
+  display: flex;
+  gap: 28px;
+  font-size: 0.95rem;
+}
+
+.nav__links a {
+  color: var(--slate-200);
+}
+
+.nav__links a.active {
+  color: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  padding: 32px 40px;
+  border-top: 1px solid var(--slate-700);
+  font-size: 0.82rem;
+  color: var(--slate-400);
+  max-width: 900px;
+}
+
+.footer p {
+  margin: 4px 0;
+}
+
+/* ==========================================================================
+   Panels — the reusable "slate panel" chrome
+   ========================================================================== */
+
+.panel {
+  background: linear-gradient(160deg, var(--slate-850), var(--slate-800));
+  border: 1px solid var(--slate-700);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+/* ==========================================================================
+   Hero / intro
+   ========================================================================== */
+
+.hero {
+  padding: 24px 0 40px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  margin: 0 0 12px;
+}
+
+.hero p {
+  color: var(--slate-200);
+  max-width: 640px;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Filter bar
+   ========================================================================== */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+.filter-bar select {
+  background: var(--slate-800);
+  border: 1px solid var(--slate-600);
+  color: var(--slate-100);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.filter-bar__count {
+  margin-left: auto;
+  color: var(--slate-400);
+  font-size: 0.85rem;
+}
+
+.filter-bar__clear {
+  background: none;
+  border: 1px solid var(--slate-600);
+  color: var(--slate-200);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.filter-bar__clear:hover {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+}
+
+/* ==========================================================================
+   Timeline diagram
+   ========================================================================== */
+
+.timeline-diagram-wrap {
+  position: relative;
+  margin: 24px 0 48px;
+  overflow-x: auto;
+}
+
+.timeline-diagram-wrap svg {
+  display: block;
+}
+
+.timeline-branch-path {
+  fill: none;
+  stroke-width: 3;
+  opacity: 0.75;
+}
+
+.timeline-node {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.timeline-node:hover {
+  transform: scale(1.15);
+}
+
+.timeline-node text,
+.timeline-diagram text {
+  font-family: var(--font-body);
+  fill: var(--slate-200);
+}
+
+.era-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px 0 8px;
+  font-size: 0.82rem;
+  color: var(--slate-400);
+}
+
+.era-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.era-legend__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Game grid + cards
+   ========================================================================== */
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.game-card {
+  display: flex;
+  background: var(--slate-850);
+  border: 1px solid var(--slate-700);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  color: var(--slate-100);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.game-card:hover {
+  border-color: var(--accent-amber-dim);
+  transform: translateY(-2px);
+  color: var(--slate-100);
+}
+
+.game-card__branch {
+  width: 5px;
+  flex-shrink: 0;
+}
+
+.game-card__body {
+  padding: 16px 18px;
+  flex: 1;
+}
+
+.game-card__body h3 {
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+}
+
+.game-card__meta {
+  font-size: 0.78rem;
+  color: var(--slate-400);
+  margin: 0 0 8px;
+}
+
+.game-card__synopsis {
+  font-size: 0.88rem;
+  color: var(--slate-200);
+  margin: 0 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Badges
+   ========================================================================== */
+
+.confidence-badge,
+.canonicity-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.confidence-badge--official {
+  color: var(--era-child);
+}
+
+.confidence-badge--strong-community {
+  color: var(--accent-amber);
+}
+
+.confidence-badge--speculative {
+  color: var(--era-downfall);
+}
+
+.canonicity-badge {
+  color: var(--slate-200);
+  border-color: var(--slate-600);
+  margin-right: 8px;
+}
+
+.canonicity-badge--non-canon {
+  color: var(--era-noncanon);
+}
+
+/* ==========================================================================
+   Detail page
+   ========================================================================== */
+
+.detail-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.detail-hero {
+  border-left: 3px solid var(--accent-amber);
+  padding: 8px 0 24px 20px;
+  margin-bottom: 24px;
+}
+
+.detail-hero__branch {
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+}
+
+.detail-hero h1 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin: 0 0 8px;
+}
+
+.detail-hero__meta {
+  color: var(--slate-400);
+  font-size: 0.9rem;
+  margin: 0 0 14px;
+}
+
+.detail-hero__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detail-synopsis,
+.detail-sourcing,
+.detail-trivia {
+  margin-bottom: 32px;
+}
+
+.detail-sourcing {
+  padding: 16px 20px;
+  background: var(--slate-850);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-700);
+}
+
+.detail-trivia ul {
+  padding-left: 20px;
+}
+
+.detail-trivia li {
+  margin-bottom: 8px;
+  color: var(--slate-200);
+}
+
+.not-found {
+  text-align: center;
+  padding: 80px 24px;
+}
+
+/* ==========================================================================
+   Codex
+   ========================================================================== */
+
+.codex-index {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.codex-index__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.codex-index__card {
+  display: block;
+  padding: 24px;
+  background: var(--slate-850);
+  border: 1px solid var(--slate-700);
+  border-radius: var(--radius-lg);
+  color: var(--slate-100);
+}
+
+.codex-index__card:hover {
+  border-color: var(--accent-amber-dim);
+  color: var(--slate-100);
+}
+
+.codex-index__card h2 {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+.codex-index__card p {
+  color: var(--slate-200);
+  font-size: 0.9rem;
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #0b0f14;
-  color: #e8ecef;
+}
+
+.codex-reader {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.markdown-doc h1 {
+  font-size: 2rem;
+}
+
+.markdown-doc h2 {
+  font-size: 1.4rem;
+  margin-top: 2.2em;
+  border-bottom: 1px solid var(--slate-700);
+  padding-bottom: 8px;
+}
+
+.markdown-doc h3 {
+  font-size: 1.1rem;
+  margin-top: 1.6em;
+}
+
+.markdown-doc p {
+  color: var(--slate-200);
+}
+
+.markdown-doc a {
+  text-decoration: underline;
+}
+
+.markdown-doc blockquote {
+  border-left: 3px solid var(--accent-amber-dim);
+  margin-left: 0;
+  padding-left: 16px;
+  color: var(--slate-400);
+}
+
+.markdown-doc code {
+  background: var(--slate-800);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.markdown-doc table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.markdown-doc th,
+.markdown-doc td {
+  border: 1px solid var(--slate-700);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.about-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-page p {
+  color: var(--slate-200);
+}
+
+/* ==========================================================================
+   Motion preferences
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .nav__links {
+    gap: 16px;
+    font-size: 0.85rem;
+  }
+
+  .slate-frame__corner {
+    display: none;
+  }
 }

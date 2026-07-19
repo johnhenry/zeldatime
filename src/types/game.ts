@@ -28,6 +28,8 @@ export interface Game {
   platform: string;
   era: Era;
   branch: Branch;
+  /** In-universe chronological position within its branch, for timeline layout (not release order). */
+  timelineOrder: number;
   synopsis: string;
   trivia: string[];
   canonicity: Canonicity;
