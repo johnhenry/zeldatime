@@ -15,6 +15,7 @@ import { Route as StatsRouteImport } from './routes/stats'
 import { Route as BranchIndexRouteImport } from './routes/branch/index'
 import { Route as BranchIdRouteImport } from './routes/branch/$id'
 import { Route as CodexIndexRouteImport } from './routes/codex/index'
+import { Route as CodexAoiMapsRouteImport } from './routes/codex/aoi-maps'
 import { Route as CodexLoreRouteImport } from './routes/codex/lore'
 import { Route as CodexSpeciesRouteImport } from './routes/codex/species'
 import { Route as CodexUiRouteImport } from './routes/codex/ui'
@@ -53,6 +54,11 @@ const BranchIdRoute = BranchIdRouteImport.update({
 const CodexIndexRoute = CodexIndexRouteImport.update({
   id: '/codex/',
   path: '/codex/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodexAoiMapsRoute = CodexAoiMapsRouteImport.update({
+  id: '/codex/aoi-maps',
+  path: '/codex/aoi-maps',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CodexLoreRoute = CodexLoreRouteImport.update({
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/stats': typeof StatsRoute
   '/branch/$id': typeof BranchIdRoute
+  '/codex/aoi-maps': typeof CodexAoiMapsRoute
   '/codex/lore': typeof CodexLoreRoute
   '/codex/species': typeof CodexSpeciesRoute
   '/codex/ui': typeof CodexUiRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/stats': typeof StatsRoute
   '/branch/$id': typeof BranchIdRoute
+  '/codex/aoi-maps': typeof CodexAoiMapsRoute
   '/codex/lore': typeof CodexLoreRoute
   '/codex/species': typeof CodexSpeciesRoute
   '/codex/ui': typeof CodexUiRoute
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/stats': typeof StatsRoute
   '/branch/$id': typeof BranchIdRoute
+  '/codex/aoi-maps': typeof CodexAoiMapsRoute
   '/codex/lore': typeof CodexLoreRoute
   '/codex/species': typeof CodexSpeciesRoute
   '/codex/ui': typeof CodexUiRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/stats'
     | '/branch/$id'
+    | '/codex/aoi-maps'
     | '/codex/lore'
     | '/codex/species'
     | '/codex/ui'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/stats'
     | '/branch/$id'
+    | '/codex/aoi-maps'
     | '/codex/lore'
     | '/codex/species'
     | '/codex/ui'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/stats'
     | '/branch/$id'
+    | '/codex/aoi-maps'
     | '/codex/lore'
     | '/codex/species'
     | '/codex/ui'
@@ -212,6 +224,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   StatsRoute: typeof StatsRoute
   BranchIdRoute: typeof BranchIdRoute
+  CodexAoiMapsRoute: typeof CodexAoiMapsRoute
   CodexLoreRoute: typeof CodexLoreRoute
   CodexSpeciesRoute: typeof CodexSpeciesRoute
   CodexUiRoute: typeof CodexUiRoute
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/codex'
       fullPath: '/codex/'
       preLoaderRoute: typeof CodexIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/codex/aoi-maps': {
+      id: '/codex/aoi-maps'
+      path: '/codex/aoi-maps'
+      fullPath: '/codex/aoi-maps'
+      preLoaderRoute: typeof CodexAoiMapsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/codex/lore': {
@@ -340,6 +360,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   StatsRoute: StatsRoute,
   BranchIdRoute: BranchIdRoute,
+  CodexAoiMapsRoute: CodexAoiMapsRoute,
   CodexLoreRoute: CodexLoreRoute,
   CodexSpeciesRoute: CodexSpeciesRoute,
   CodexUiRoute: CodexUiRoute,

@@ -34,7 +34,7 @@ Reviewers describe its menus and overall UI as near-identical to — in one revi
 
 Layered on top of that inherited visual language, Age of Imprisonment introduces several new musou-specific HUD elements not present in prior Hyrule Warriors entries: a **Weak-Point Gauge**, a **Sync Gauge** tracking cooperative-attack readiness, a **Warrior Special** meter charged by dealing and taking damage, a **Battery System** tracking Zonai-device use, and a new **Sync Strikes** mechanic — a gauge that fills through combat and, once full, is triggered with the L button to team up with a nearby ally for a combined attack.
 
-*Open question: no primary screenshot or UI-database breakdown of Age of Imprisonment's specific icon vocabulary, color language, or region-division mechanics survived this research pass — the "flawless copies of BOTW/TOTK" characterization is a critic summary, not a verified element-by-element comparison.*
+*Follow-up: a dedicated second research pass took on this open question directly — see [The Maps of the Imprisoning War](/codex/aoi-maps) for the element-by-element teardown (HUD layout, Zonai device systems, minimap/outpost mechanics, the off-screen ally command system, and a documented post-launch UI patch). That pass got real, sourced detail on how these systems work — but confirms the icon vocabulary, color language, and top-level campaign map's visual appearance genuinely aren't documented anywhere in currently available sources, "flawless copies of BOTW/TOTK" remains a critic summary rather than a verified element-by-element visual comparison.*
 
 ## 5. Switch 2 system-level UI trends
 

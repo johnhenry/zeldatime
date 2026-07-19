@@ -40,6 +40,14 @@ function CodexIndexPage() {
               timeline's clock.
             </p>
           </Link>
+          <Link to="/codex/aoi-maps" className="codex-index__card">
+            <h2>The Maps of the Imprisoning War</h2>
+            <p>
+              A follow-up deep dive closing our own earlier open question: Age of Imprisonment's
+              HUD, minimap, and menus, element by element — and an honest account of what still
+              isn't documented anywhere.
+            </p>
+          </Link>
         </div>
       </div>
     </SlateFrame>
