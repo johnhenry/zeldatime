@@ -10,6 +10,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // Fandom's CDN degrades hotlinked images to 300px when a Referer is sent.
+      { name: "referrer", content: "no-referrer" },
       { title: "Chronicle Slate — An Interactive Zelda Timeline" },
       {
         name: "description",

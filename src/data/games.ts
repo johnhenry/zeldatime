@@ -8,7 +8,7 @@ export const games: Game[] = [
     releaseDate: "2011 (Wii); HD remaster 2021 (Switch)",
     releaseYear: "2011",
     image: "https://upload.wikimedia.org/wikipedia/en/9/99/Legend_of_Zelda_Skyward_Sword_boxart.png",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/6/61/SS_Key_Artwork.jpg/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/6/61/SS_Key_Artwork.jpg/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "thematic", targetId: "ocarina-of-time", note: "Demise's dying curse is the mythological engine behind every later Ganon." },
     ],
@@ -76,7 +76,7 @@ export const games: Game[] = [
     releaseDate: "1998",
     releaseYear: "1998",
     image: "https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/4b/OoT3D_Hyrule_Field_Artwork_2.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/4b/OoT3D_Hyrule_Field_Artwork_2.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "thematic", targetId: "a-link-to-the-past", note: "Its Downfall-branch outcome becomes ALttP's Imprisoning War backstory." },
     ],
@@ -126,7 +126,7 @@ export const games: Game[] = [
     releaseDate: "2006",
     releaseYear: "2006",
     image: "https://upload.wikimedia.org/wikipedia/en/0/0e/The_Legend_of_Zelda_Twilight_Princess_Game_Cover.jpg",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/b/b0/TPHD_Cast_Artwork_3.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/b/b0/TPHD_Cast_Artwork_3.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "thematic", targetId: "majoras-mask", note: "The Hero's Shade is heavily implied to be the Hero of Time, passing on his skills." },
     ],
@@ -245,7 +245,7 @@ export const games: Game[] = [
     releaseDate: "1991",
     releaseYear: "1991",
     image: "https://upload.wikimedia.org/wikipedia/en/2/21/The_Legend_of_Zelda_A_Link_to_the_Past_SNES_Game_Cover.jpg",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/e/e0/ALttP_Sacred_Grove_Artwork.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/e/e0/ALttP_Sacred_Grove_Artwork.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "direct-prequel", targetId: "links-awakening", note: "Its Link sails off in triumph — and shipwrecks." },
       { type: "thematic", targetId: "a-link-between-worlds", note: "The same Hyrule, generations later." },
@@ -271,7 +271,7 @@ export const games: Game[] = [
     releaseDate: "1993 (Game Boy); remake 2019 (Switch)",
     releaseYear: "1993",
     image: "https://upload.wikimedia.org/wikipedia/en/c/c1/Link%27s_Awakening.png",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/49/LANS_Key_Artwork.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/49/LANS_Key_Artwork.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "direct-sequel", targetId: "a-link-to-the-past", note: "The same hero, shipwrecked after his victory." },
     ],
@@ -338,7 +338,7 @@ export const games: Game[] = [
     releaseDate: "2013",
     releaseYear: "2013",
     image: "https://upload.wikimedia.org/wikipedia/en/1/1b/The_Legend_of_Zelda_A_Link_Between_Worlds_NA_cover.jpg",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/4c/ALBW_Dungeon_Artwork.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/4c/ALBW_Dungeon_Artwork.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "thematic", targetId: "a-link-to-the-past", note: "Reuses ALttP's overworld map, reimagined generations later." },
       { type: "direct-prequel", targetId: "tri-force-heroes" },
@@ -386,7 +386,7 @@ export const games: Game[] = [
     releaseDate: "1986",
     releaseYear: "1986",
     image: "https://upload.wikimedia.org/wikipedia/en/4/41/Legend_of_zelda_cover_%28with_cartridge%29_gold.png",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/7/7f/TLoZ_Link_Princess_Zelda_Artwork.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/7/7f/TLoZ_Link_Princess_Zelda_Artwork.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "direct-prequel", targetId: "adventure-of-link" },
     ],
@@ -433,7 +433,7 @@ export const games: Game[] = [
     releaseDate: "2017",
     releaseYear: "2017",
     image: "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/2/22/BotW_Link_Climbing_Key_Art_English_Logo.png/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/2/22/BotW_Link_Climbing_Key_Art_English_Logo.png/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "direct-prequel", targetId: "tears-of-the-kingdom" },
       { type: "parallel", targetId: "age-of-calamity", note: "AoC retells this game's backstory as a winnable what-if." },
@@ -487,7 +487,7 @@ export const games: Game[] = [
     releaseDate: "2020",
     releaseYear: "2020",
     image: "https://upload.wikimedia.org/wikipedia/en/e/e1/Hyrule_Warriors_Age_Of_Calamity.jpg",
-    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/6/6f/HWAoC_Key_Artwork.jpg/revision/latest",
+    keyArt: "https://static.wikia.nocookie.net/zelda_gamepedia_en/images/6/6f/HWAoC_Key_Artwork.jpg/revision/latest/scale-to-width-down/1600",
     connections: [
       { type: "diverges-from", targetId: "breath-of-the-wild", note: "Splits from BOTW's remembered history at the Champions' last stand." },
     ],
