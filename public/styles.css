@@ -671,6 +671,15 @@ select:focus-visible {
   min-width: 0;
 }
 
+/* The hero art was sized once (180px) and never revisited for wide
+   screens; give it a bit more presence in the spacious 780px reading
+   column on large desktops. */
+@media (min-width: 1440px) {
+  .detail-hero__art {
+    width: 220px;
+  }
+}
+
 /* Intentionally narrower than the site's usual 719px mobile breakpoint --
    the hero row still reads fine down to ~561px, only very small phones
    need it to stack. Not merged into the 719px convention on purpose. */
@@ -1947,6 +1956,14 @@ body::before {
   text-align: center;
 }
 
+/* Opt-in override for the rare genuinely-landscape essay image (screenshots,
+   maps, wide key art) -- applied via a source-URL allowlist in
+   MarkdownDoc.tsx, since plain markdown has no way to attach a per-image
+   class. New images default to the portrait ratio above unless added there. */
+.markdown-doc img.landscape {
+  aspect-ratio: 16 / 9;
+}
+
 /* Image-comparison "tables" (each cell = one image + its caption) become a
    responsive gallery: side-by-side on desktop, full-width stacked cards on
    mobile, instead of squeezing images into narrow table columns. */
@@ -1980,6 +1997,10 @@ body::before {
   width: 100%;
   aspect-ratio: 0.68;
   object-fit: cover;
+}
+
+.markdown-doc table:has(img) img.landscape {
+  aspect-ratio: 16 / 9;
 }
 
 .markdown-doc table:has(img) em {
