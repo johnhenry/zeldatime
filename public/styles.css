@@ -507,6 +507,10 @@ select:focus-visible {
   overflow: hidden;
   color: var(--slate-100);
   transition: border-color 0.15s ease, transform 0.15s ease;
+  /* The art rail is a flat 86px at every width -- cap the card so it can't
+     stretch to fill a wide auto-fit track and turn the art into a thin
+     sliver next to an oversized text panel. */
+  max-width: 420px;
 }
 
 .game-card:hover {
