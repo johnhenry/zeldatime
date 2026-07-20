@@ -671,6 +671,9 @@ select:focus-visible {
   min-width: 0;
 }
 
+/* Intentionally narrower than the site's usual 719px mobile breakpoint --
+   the hero row still reads fine down to ~561px, only very small phones
+   need it to stack. Not merged into the 719px convention on purpose. */
 @media (max-width: 560px) {
   .detail-hero {
     flex-direction: column;
@@ -900,25 +903,6 @@ select:focus-visible {
   * {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
-  }
-}
-
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
-
-@media (max-width: 640px) {
-  .nav {
-    padding: 16px 20px;
-  }
-
-  .nav__links {
-    gap: 16px;
-    font-size: 0.85rem;
-  }
-
-  .slate-frame__corner {
-    display: none;
   }
 }
 
@@ -1743,6 +1727,10 @@ select:focus-visible {
   .sound-toggle {
     width: 30px;
     height: 30px;
+  }
+
+  .slate-frame__corner {
+    display: none;
   }
 }
 
