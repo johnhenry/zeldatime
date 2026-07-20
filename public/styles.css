@@ -413,6 +413,7 @@ select:focus-visible {
 
 .timeline-diagram-wrap {
   position: relative;
+  display: flex;
   margin: 24px 0 48px;
   overflow-x: auto;
   /* Soft edge fade hints that the chart scrolls horizontally. */
@@ -421,6 +422,15 @@ select:focus-visible {
 
 .timeline-diagram-wrap svg {
   display: block;
+  /* Centers the diagram when it's narrower than the wrap (a filtered,
+     sparse branch view); auto-margins resolve to 0 when the diagram
+     overflows, so the full unfiltered chart still starts flush-left and
+     scrolls rightward as before. flex-shrink:0 is required -- without it
+     flex would compress the SVG's own box, shrinking every label the same
+     way a whole-diagram CSS scale would (rejected for that reason, see
+     TimelineDiagram.tsx). This never touches .timeline-node itself. */
+  margin: 0 auto;
+  flex-shrink: 0;
 }
 
 .timeline-branch-path {
